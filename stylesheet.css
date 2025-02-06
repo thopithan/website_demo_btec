@@ -1,19 +1,22 @@
-﻿body {
+﻿/* General body styling */
+body {
 	margin: 2;
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+/* General header styling */
 h1 {
 	color: Black;
 	background-color: white;
 }
 
-/* adapted from https://www.w3schools.com/howto/howto_js_topnav.asp */
-
+/* Navigation bar */
 .topnav {
 	overflow: hidden;
 	background-color: black;
 }
 
+/* Navigation links */
 .topnav a {
 	float: left;
 	color: white;
@@ -23,25 +26,30 @@ h1 {
 	font-size: 20px;
 }
 
+/* Hover effect for links */
 .topnav a:hover {
 	background-color: grey;
 	color: white;
 }
 
+/* Active link styling */
 .topnav a.active {
 	background-color: #04AA6D;
 	color: white;
 }
 
- .infcontainer {
-	 width: 100%;
-	 max-width: 1200px;
-	 margin: 0 auto; /* Centres the container */
-	 padding: 20px;
-	 background: #f8f8f8;
-	 border: 1px solid #ddd;
-	 margin: 20px auto;
- }
+/* Container for general content */
+.infcontainer {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto; /* Centers the container */
+	padding: 20px;
+	background: #f8f8f8;
+	border: 1px solid #ddd;
+	margin: 20px auto;
+}
+
+/* Main content styling */
 .full-width-container {
 	width: 97.5%;
 	padding: 20px;
@@ -50,6 +58,8 @@ h1 {
 	text-align: center;
 	margin: 20px auto;
 }
+
+/* Header styling */
 .header {
 	display: flex;
 	align-items: center;
@@ -57,60 +67,49 @@ h1 {
 	background: black;
 	border-bottom: 2px solid #ddd;
 }
+
 .logo {
 	height: 50px; /* Adjust size */
 	margin-right: 15px;
 }
+
 .company-name {
 	font-size: 24px;
 	font-weight: bold;
 	color: #f8f8f8;
 }
 
-/* Mobile menu: hide menu by default */
-.topnav.responsive {
-	position: relative;
-	display: block;
-}
-
-.topnav.responsive .icon {
-	display: block;
+/* Mobile menu: Hide menu by default */
+.topnav .icon {
+	display: none; /* Hide the hamburger icon by default */
+	font-size: 30px;
+	color: white;
+	padding: 14px 16px;
 	cursor: pointer;
 }
 
-.topnav.responsive a {
-	display: block;
-	text-align: left;
-	padding: 10px;
-	font-size: 18px;
-}
-
-/* Hamburger icon styles */
-.icon {
-	display: none;
-	font-size: 30px;
-	color: black;
-	padding: 14px 16px;
-}
-
+/* Make links block-level on mobile */
 @media screen and (max-width: 600px) {
 	.topnav {
-		display: none;
-		width: 100%;
+		display: none; /* Hide the navigation links by default */
 	}
 
+	/* Show the menu links when .responsive is added */
 	.topnav.responsive {
-		display: block;
+		display: block; /* Show links when the menu is clicked */
+		position: relative;
 	}
 
+	/* Stack links vertically */
 	.topnav a {
-		width: 100%;
+		display: block;
 		text-align: left;
 		padding: 10px;
+		font-size: 18px;
 	}
 
-	/* Show hamburger icon on small screens */
+	/* Show the hamburger icon */
 	.icon {
-		display: block;
+		display: block; /* Show the hamburger icon on small screens */
 	}
 }
