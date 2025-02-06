@@ -1,33 +1,56 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Text</title>
+  <meta charset="UTF-8">
+  <title>G Bank.com</title>
+  <link type="text/css" rel="stylesheet" href="stylesheet.css">
 </head>
+<body>
+
+<!-- Header Section -->
 <header class="header">
-  <img src="logo.png" alt="Company Logo" class="logo">
-  <span class="company-name">Bank.com</span>
+  <div class="header-content">
+    <!-- Logo and Company Name on the Left -->
+    <img src="logo.png" alt="Company Logo" class="logo">
+    <span class="company-name">Bank.com</span>
+    <!-- Hamburger Menu Icon on the Right for Mobile -->
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">☰</a>
+  </div>
 </header>
 
-<body>
-<div class="topnav">
+<!-- Top Navigation Bar -->
+<div class="topnav" id="myTopnav">
   <a href="index.html">Text</a>
   <a href="links.html">Links</a>
   <a href="images.html">Images</a>
   <a href="colours.html">Colours</a>
-  <a href="tables.html">Tables</a>							
-  <a href="audio_video.html">Audio & Video</a>	
+  <a href="tables.html">Tables</a>
+  <a href="audio_video.html">Audio & Video</a>
   <a href="lists.html">Lists</a>
   <a href="forms.html">Forms</a>
-  <a href="scripting.html">Scripting</a>	
+  <a href="scripting.html">Scripting</a>
   <a href="graphics.html">Graphics</a>
 </div>
 
 
 
+<!-- JavaScript -->
+<script>
+  // Function to toggle the menu on smaller screens
+  function toggleMenu() {
+    const nav = document.getElementById("myTopnav"); // Get the navigation element
+    if (nav.classList.contains("responsive")) {
+      nav.classList.remove("responsive"); // Remove "responsive" class to hide the menu
+    } else {
+      nav.classList.add("responsive"); // Add "responsive" class to show the menu
+    }
+  }
+</script>
 
 
 
-</body>	
+
+</body>
 </html>

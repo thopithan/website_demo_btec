@@ -1,34 +1,67 @@
 ﻿/* General body styling */
 body {
-	margin: 2;
+	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-/* General header styling */
-h1 {
-	color: Black;
-	background-color: white;
+/* Header Styling */
+.header {
+	display: flex;
+	align-items: center;
+	background: black;
+	padding: 10px 20px;
+	justify-content: space-between; /* Logo on the left, menu on the right */
+	border-bottom: 2px solid #ddd;
 }
 
-/* Navigation bar */
+.header-content {
+	display: flex;
+	align-items: center;
+	width: 100%; /* Full width of header */
+}
+
+/* Logo and Company Name on the Left */
+.logo {
+	height: 50px; /* Adjust the logo size as needed */
+	margin-right: 10px;
+}
+
+.company-name {
+	font-size: 24px;
+	font-weight: bold;
+	color: #f8f8f8;
+}
+
+/* Hamburger Menu Icon */
+.icon {
+	display: none; /* Hidden on desktop screens */
+	font-size: 26px;
+	color: white;
+	cursor: pointer;
+}
+
+/* Topnav Styling */
 .topnav {
-	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end; /* Align links to the right */
 	background-color: black;
+	overflow: hidden;
+	flex-wrap: nowrap;
 }
 
-/* Navigation links */
 .topnav a {
-	float: left;
 	color: white;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
 	font-size: 20px;
+	display: block;
 }
 
 /* Hover effect for links */
 .topnav a:hover {
-	background-color: grey;
+	background-color: gray;
 	color: white;
 }
 
@@ -38,18 +71,31 @@ h1 {
 	color: white;
 }
 
-/* Container for general content */
-.infcontainer {
-	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto; /* Centers the container */
-	padding: 20px;
-	background: #f8f8f8;
-	border: 1px solid #ddd;
-	margin: 20px auto;
-}
+/* Responsive Styles for Small Screens */
+@media screen and (max-width: 600px) {
+	/* Show the menu icon on smaller screens */
+	.header-content .icon {
+		display: block; /* Show hamburger icon */
+		margin-left: auto; /* Push it to the right */
+	}
 
-/* Main content styling */
+	/* Hide links by default on smaller screens */
+	.topnav a {
+		display: none;
+	}
+
+	/* Responsive menu: reveal links when "responsive" class is added */
+	.topnav.responsive {
+		flex-direction: column; /* Stack links vertically */
+		align-items: flex-start; /* Align links to the left */
+	}
+
+	.topnav.responsive a {
+		display: block; /* Show each link in a vertical list */
+		padding: 10px 20px;
+		text-align: left;
+	}
+}
 .full-width-container {
 	width: 97.5%;
 	padding: 20px;
@@ -57,59 +103,4 @@ h1 {
 	color: white;
 	text-align: center;
 	margin: 20px auto;
-}
-
-/* Header styling */
-.header {
-	display: flex;
-	align-items: center;
-	padding: 10px 20px;
-	background: black;
-	border-bottom: 2px solid #ddd;
-}
-
-.logo {
-	height: 50px; /* Adjust size */
-	margin-right: 15px;
-}
-
-.company-name {
-	font-size: 24px;
-	font-weight: bold;
-	color: #f8f8f8;
-}
-
-/* Mobile menu: Hide menu by default */
-.topnav .icon {
-	display: none; /* Hide the hamburger icon by default */
-	font-size: 30px;
-	color: white;
-	padding: 14px 16px;
-	cursor: pointer;
-}
-
-/* Make links block-level on mobile */
-@media screen and (max-width: 600px) {
-	.topnav {
-		display: none; /* Hide the navigation links by default */
-	}
-
-	/* Show the menu links when .responsive is added */
-	.topnav.responsive {
-		display: block; /* Show links when the menu is clicked */
-		position: relative;
-	}
-
-	/* Stack links vertically */
-	.topnav a {
-		display: block;
-		text-align: left;
-		padding: 10px;
-		font-size: 18px;
-	}
-
-	/* Show the hamburger icon */
-	.icon {
-		display: block; /* Show the hamburger icon on small screens */
-	}
 }

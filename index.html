@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
   <title>G Bank.com</title>
+  <link type="text/css" rel="stylesheet" href="stylesheet.css">
 </head>
-
-<header class="header">
-  <img src="logo.png" alt="Company Logo" class="logo">
-  <span class="company-name">Bank.com</span>
-</header>
-
-
 <body>
 
-<!-- Top navigation bar -->
+<!-- Header Section -->
+<header class="header">
+  <div class="header-content">
+    <!-- Logo and Company Name on the Left -->
+    <img src="logo.png" alt="Company Logo" class="logo">
+    <span class="company-name">Bank.com</span>
+    <!-- Hamburger Menu Icon on the Right for Mobile -->
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">☰</a>
+  </div>
+</header>
+
+<!-- Top Navigation Bar -->
 <div class="topnav" id="myTopnav">
   <a href="index.html">Text</a>
   <a href="links.html">Links</a>
@@ -26,27 +31,36 @@
   <a href="forms.html">Forms</a>
   <a href="scripting.html">Scripting</a>
   <a href="graphics.html">Graphics</a>
-  <!-- Hamburger icon -->
-  <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">&#9776;</a>
 </div>
 
 
-<!-- Main content -->
-<div class="full-width-container">
-  <p style="font-size: 80px;text-align: center;"> Get 175 for switching banks </p>
-   <P style= "text-align: justify;"> Within 45 days of your account opening you need to: switch to us using the Current Account Switch Service (including at least 2 Direct Debits or standing orders), deposit £1,000, make 5+ debit card payments, and log on to digital banking. New customers only. T&Cs apply.</p>
-</div>
 
+<!-- JavaScript -->
 <script>
+  // Function to toggle the menu on smaller screens
   function toggleMenu() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
+    const nav = document.getElementById("myTopnav"); // Get the navigation element
+    if (nav.classList.contains("responsive")) {
+      nav.classList.remove("responsive"); // Remove "responsive" class to hide the menu
     } else {
-      x.className = "topnav";
+      nav.classList.add("responsive"); // Add "responsive" class to show the menu
     }
   }
 </script>
+
+<div class="full-width-container">
+  <p style="font-size: 80px;text-align: center;"> Get 175 for switching banks </p>
+  <P style= "text-align: justify;"> Within 45 days of your account opening you need to: switch to us using the Current Account Switch Service (including at least 2 Direct Debits or standing orders), deposit £1,000, make 5+ debit card payments, and log on to digital banking. New customers only. T&Cs apply.</p>
+</div>
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
