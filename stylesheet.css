@@ -1,0 +1,68 @@
+﻿body {
+	margin: 2;
+	font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+	color: Black;
+	background-color: white;
+}
+
+/* adapted from https://www.w3schools.com/howto/howto_js_topnav.asp */
+
+.topnav {
+	overflow: hidden;
+	background-color: black;
+}
+
+.topnav a {
+	float: left;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.topnav a:hover {
+	background-color: grey;
+	color: white;
+}
+
+.topnav a.active {
+	background-color: #04AA6D;
+	color: white;
+}
+
+ .infcontainer {
+	 width: 100%;
+	 max-width: 1200px;
+	 margin: 0 auto; /* Centres the container */
+	 padding: 20px;
+	 background: #f8f8f8;
+	 border: 1px solid #ddd;
+	 margin: 20px auto;
+ }
+.full-width-container {
+	width: 97.5%;
+	padding: 20px;
+	background: black;
+	color: white;
+	text-align: center;
+	margin: 20px auto;
+}
+.header {
+	display: flex;
+	align-items: center;
+	padding: 10px 20px;
+	background: black;
+	border-bottom: 2px solid #ddd;
+}
+.logo {
+	height: 50px; /* Adjust size */
+	margin-right: 15px;
+}
+.company-name {
+	font-size: 24px;
+	font-weight: bold;
+	color: #f8f8f8;
+}
