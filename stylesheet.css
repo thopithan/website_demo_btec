@@ -110,5 +110,45 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-wrap: wrap;         /* Ensures content wraps when needed */
+	flex-wrap: wrap;
+}
+
+/* 3 size continer */
+.container3 {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+.item3 {
+	background: white;
+	padding: 20px;
+	text-align: center;
+}
+
+
+/* 2 colum CONTAINER */
+/* MAIN CONTAINER */
+.container2 {
+	display: flex;
+	gap: 20px;
+	padding: 20px;
+}
+
+/* LEFT & RIGHT COLUMNS */
+.left-column, .right-column {
+	flex: 1;
+	padding: 20px;
+	background: #f4f4f4;
+	border-radius: 10px;
+}
+
+.left-column {
+	background: #ddd;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+	.container {
+		flex-direction: column;
+	}
 }
