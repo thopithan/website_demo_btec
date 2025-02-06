@@ -9,9 +9,9 @@ body {
 	display: flex;
 	align-items: center;
 	background: black;
-	padding: 10px 10px;
+	padding: 10px 20px;
 	justify-content: space-between; /* Logo on the left, menu on the right */
-	border-bottom: 3px solid #ddd;
+	border-bottom: 5px solid #ddd;
 }
 
 .header-content {
@@ -96,11 +96,18 @@ body {
 		text-align: left;
 	}
 }
+
 .full-width-container {
-	width: 97.5%;
-	padding: 10px;
+	width: 100%;
+	max-width: 100%;         /* Prevents container from exceeding the viewport */
+	box-sizing: border-box;  /* Includes padding and border in the total width */
+	padding: 25px;
 	background: black;
 	color: white;
 	text-align: center;
-	margin: 5px auto;
+	margin: 2px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;         /* Ensures content wraps when needed */
 }
