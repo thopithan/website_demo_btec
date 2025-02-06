@@ -9,9 +9,9 @@ body {
 	display: flex;
 	align-items: center;
 	background: black;
-	padding: 10px 20px;
+	padding: 10px 10px;
 	justify-content: space-between; /* Logo on the left, menu on the right */
-	border-bottom: 2px solid #ddd;
+	border-bottom: 3px solid #ddd;
 }
 
 .header-content {
@@ -98,9 +98,9 @@ body {
 }
 .full-width-container {
 	width: 97.5%;
-	padding: 20px;
+	padding: 10px;
 	background: black;
 	color: white;
 	text-align: center;
-	margin: 20px auto;
+	margin: 5px auto;
 }
