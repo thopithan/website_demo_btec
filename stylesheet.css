@@ -66,3 +66,51 @@ h1 {
 	font-weight: bold;
 	color: #f8f8f8;
 }
+
+/* Mobile menu: hide menu by default */
+.topnav.responsive {
+	position: relative;
+	display: block;
+}
+
+.topnav.responsive .icon {
+	display: block;
+	cursor: pointer;
+}
+
+.topnav.responsive a {
+	display: block;
+	text-align: left;
+	padding: 10px;
+	font-size: 18px;
+}
+
+/* Hamburger icon styles */
+.icon {
+	display: none;
+	font-size: 30px;
+	color: white;
+	padding: 14px 16px;
+}
+
+@media screen and (max-width: 600px) {
+	.topnav {
+		display: none;
+		width: 100%;
+	}
+
+	.topnav.responsive {
+		display: block;
+	}
+
+	.topnav a {
+		width: 100%;
+		text-align: left;
+		padding: 10px;
+	}
+
+	/* Show hamburger icon on small screens */
+	.icon {
+		display: block;
+	}
+}
