@@ -35,7 +35,8 @@ body {
 /* Hamburger Menu Icon */
 .icon {
 	display: none; /* Hidden on desktop screens */
-	font-size: 26px;
+	font-size: 20px;
+
 	color: white;
 	cursor: pointer;
 }
