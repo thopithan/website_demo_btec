@@ -136,21 +136,22 @@ body {
 /* MAIN CONTAINER */
 .container2 {
 	display: flex;
-	gap: 20px;
+	gap: 1px;
 	padding: 20px;
 }
 
 /* LEFT & RIGHT COLUMNS */
 .left-column, .right-column {
 	flex: 1;
-	padding: 20px;
+	padding: 10px;
+
 	background: white;
 	border-radius: 10px;
 	margin: auto;
 }
 
 .right-column {
-	padding: 40px;
+	padding: 3px;
 }
 
 /* RESPONSIVE DESIGN */
@@ -158,4 +159,11 @@ body {
 	.container2 {
 		flex-direction: column;
 	}
+}
+
+.responsive-image {
+	width: 51%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
 }
