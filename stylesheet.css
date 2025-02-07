@@ -138,18 +138,19 @@ body {
 /* LEFT & RIGHT COLUMNS */
 .left-column, .right-column {
 	flex: 1;
-	padding: 0px;
-	background: #f4f4f4;
+	padding: 20px;
+	background: white;
 	border-radius: 10px;
+	margin: auto;
 }
 
-.left-column {
-	background: #ddd;
+.right-column {
+	padding: 40px;
 }
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
-	.container {
+	.container2 {
 		flex-direction: column;
 	}
 }
