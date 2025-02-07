@@ -127,7 +127,7 @@ a {
 }
 .item3 {
 	background: white;
-	padding: 20px;
+	padding: auto;
 	text-align: center;
 }
 .item2 {
@@ -188,4 +188,47 @@ a {
 	transition: 0.3s;
 }
 
-/* Hover Effect */
+/* 3-column image container */
+.containerforimages {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+	gap: 20px;
+	padding: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Individual image columns */
+.columnforimage {
+	text-align: center;
+	background: white;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.columnforimage img {
+	width: 100%;
+	height: auto;
+	border-radius: 10px; /* Optional: Rounded corners */
+}
+
+/* Image descriptions */
+.descriptionimage {
+	margin-top: 10px;
+	font-size: 16px;
+	color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+	.containerforimages {
+		grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on tablets */
+	}
+}
+
+@media (max-width: 600px) {
+	.containerforimages {
+		grid-template-columns: 1fr; /* Stack into a single column on small screens */
+	}
+}
