@@ -201,7 +201,7 @@ a {
 /* Individual image columns */
 .columnforimage {
 	text-align: center;
-	background: white;
+	background: black;
 	padding: 10px;
 	border-radius: 10px;
 	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -217,7 +217,7 @@ a {
 .descriptionimage {
 	margin-top: 10px;
 	font-size: 16px;
-	color: #333;
+	color: white;
 }
 
 /* Responsive Design */
