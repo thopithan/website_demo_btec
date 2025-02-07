@@ -2,6 +2,7 @@
 body {
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
+
 }
 
 /* Header Styling */
@@ -137,7 +138,7 @@ body {
 /* LEFT & RIGHT COLUMNS */
 .left-column, .right-column {
 	flex: 1;
-	padding: 20px;
+	padding: 0px;
 	background: #f4f4f4;
 	border-radius: 10px;
 }
