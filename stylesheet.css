@@ -233,17 +233,27 @@ a {
 
 
 
-
-
-
-
+/* ... ( image including service quality) */
 
 
 .responsive-image {
-	border-radius: 10px;
-	width: 100%; /* Makes the image take the full width of its container */
-	max-width: 240px; /* Ensures it doesn’t become too large on bigger screens */
+	max-width: 90%; /* Default max-width */
 	height: auto;
+	border-radius: 10px;
+	display: block;
+	margin: 0 auto;
+}
+
+@media (min-width: 768px) { /* Example breakpoint for tablets and larger */
+	.responsive-image {
+		max-width: 70%; /* Adjust for larger screens */
+	}
+}
+
+@media (min-width: 1200px) { /* Example breakpoint for larger desktops */
+	.responsive-image {
+		max-width: 50%; /* Adjust for very large screens */
+	}
 }
 
 
