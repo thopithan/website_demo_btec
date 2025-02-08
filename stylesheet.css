@@ -167,10 +167,10 @@ a {
 }
 
 .responsive-image {
-	width: 51%;
+	border-radius: 13px;
+	width: 100%; /* Makes the image take the full width of its container */
+	max-width: 240px; /* Ensures it doesn’t become too large on bigger screens */
 	height: auto;
-	display: block;
-	margin: 0 auto;
 }
 /* button design*/
 .button-container {
