@@ -55,40 +55,23 @@
   <p style= "text-align: justify;"> Within 45 days of your account opening you need to: switch to us using the Current Account Switch Service (including at least 2 Direct Debits or standing orders), deposit £1,000, make 5+ debit card payments, and log on to digital banking. New customers only. T&Cs apply.</p> <br>
 </div>
 
-
-
+<!-- First Section: Animation Left, Text Right -->
 <div class="container2">
   <div class="left-column">
-
-    <div class="item2" class="responsive-image" id="lottie-container">
-    </div>
+    <div class="item2" id="lottie-container"></div>
   </div>
-
   <div class="right-column">
-    <h2 style="text-align: center;font-size: 39px"> <strong> Banking in black and white </strong></h2>
-
-    <p style= "text-align: center; font-size: 23px "> <span> &#10173;</span> Open an account in minutes </p>
-    <p style= "text-align: center; font-size: 23px "> <span> &#10173;</span> A virtual card to use straight away </p>
-    <p style= "text-align: center ; font-size: 23px "> <span> &#10173;</span> No monthly fees </p>
+    <h2 style="text-align: center; font-size: 39px"><strong>Banking in black and white</strong></h2>
+    <p style="text-align: center; font-size: 23px"><span> &#10173;</span> Open an account in minutes</p>
+    <p style="text-align: center; font-size: 23px"><span> &#10173;</span> A virtual card to use straight away</p>
+    <p style="text-align: center; font-size: 23px"><span> &#10173;</span> No monthly fees</p>
     <div class="button-container">
-    <a href="forms.html">
-      <button class="btn" style=" background-color: black;">Apply Now</button>
-    </a>
+      <a href="forms.html">
+        <button class="btn" style="background-color: black;">Apply Now</button>
+      </a>
     </div>
   </div>
 </div>
-
-
-<script>
-  // Lottie animation configuration
-  var animation = bodymovin.loadAnimation({
-    container: document.getElementById('lottie-container'), // The container where the animation will be displayed
-    renderer: 'svg', // Render the animation as an SVG
-    loop: true, // Loop the animation
-    autoplay: true, // Start the animation automatically
-    path: 'online-sales.json' // Path to your Lottie JSON file
-  });
-</script>
 
 
 
@@ -102,6 +85,83 @@
   </div>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Second Section: Animation Right, Text Left -->
+<div class="container3 ">
+  <div class="left-column">
+    <h2 style="text-align: center; font-size: 39px"><strong>Manage Your Finances</strong></h2>
+    <p style="text-align: center; font-size: 23px"><span> &#10173;</span> Track your expenses easily</p>
+    <p style="text-align: center; font-size: 23px"><span> &#10173;</span> Get instant transaction alerts</p>
+    <p style="text-align: center; font-size: 23px"><span> &#10173;</span> Secure and fast payments</p>
+    <div class="button-container">
+      <a href="forms.html">
+        <button class="btn" style="background-color: black;">Get Started</button>
+      </a>
+    </div>
+  </div>
+  <div class="right-column">
+    <div class="item2" id="lottie-container-right"></div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  // First Lottie Animation (Left Side)
+  bodymovin.loadAnimation({
+    container: document.getElementById('lottie-container'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'online-sales.json' // Replace with your Lottie JSON file
+  });
+
+  // Second Lottie Animation (Right Side)
+  bodymovin.loadAnimation({
+    container: document.getElementById('lottie-container-right'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'buy-online.json' // Replace with your Lottie JSON file
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

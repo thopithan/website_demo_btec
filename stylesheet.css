@@ -4,6 +4,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh; /* Full height of the viewport */
+	font-family: 'Aptos'
 }
 
 
@@ -138,34 +139,105 @@ a {
 	text-align: center;
 }
 
-/* 2 colum CONTAINER */
-/* MAIN CONTAINER */
+/* ... (other CSS styles) */
+
 .container2 {
 	display: flex;
-	gap: 1px;
-	padding: 20px;
+	align-items: center;
+	justify-content: space-between;
+	padding: 50px;
+	gap: 20px;
 }
 
-/* LEFT & RIGHT COLUMNS */
 .left-column, .right-column {
-	flex: 1;
-	padding: 10px;
+	flex: 1; /* Equal width columns */
+	text-align: center;
+}
 
-	background: white;
-	border-radius: 10px;
+/* First Section (Animation Left, Text Right) - No Changes Needed */
+.container2 .left-column {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container2 .right-column {
+	text-align: left; /* Text aligned to the left */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/* ... (other CSS styles) */
+
+/* Second Section (Animation Right, Text Left) - Key Changes */
+.container3 {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 50px;
+	gap: 20px;
+}
+
+.container3 .left-column {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.container3 .right-column {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.left-column .item2,
+.right-column .item2 {
+	width: 100%;
+	max-width: 400px;
 	margin: auto;
 }
 
-.right-column {
-	padding: 3px;
-}
-
-/* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
-	.container2 {
-		flex-direction: column;
+	.container2, .container3 {
+		flex-direction: column; /* Stack columns vertically */
+	}
+
+	/* Order change for mobile */
+	.container3 .left-column { /* Text column */
+		order: 2; /* Place text *after* the animation */
+	}
+
+	.container3 .right-column { /* Animation column */
+		order: 1; /* Place animation *before* the text */
+		margin-bottom: 20px; /* Add some space below the animation */
+	}
+
+	.left-column, .right-column {
+		text-align: center;
+	}
+
+	.right-column {
+		padding-left: 0;
+	}
+
+	.left-column {
+		margin-bottom: 20px;
 	}
 }
+
+/* ... (rest of your CSS) */
+
+
+
+
+
+
+
+
+
+
 
 .responsive-image {
 	border-radius: 10px;
@@ -173,6 +245,10 @@ a {
 	max-width: 240px; /* Ensures it doesn’t become too large on bigger screens */
 	height: auto;
 }
+
+
+
+
 /* button design*/
 .button-container {
 	text-align: center;
@@ -271,14 +347,27 @@ a {
 	}
 }
 
+/* ... other CSS styles ... */
 
-/* Center the animation container */
-#lottie-container {
-	flex-grow: 1; /* Ensures the animation fills the rest of the space */
+.lottie-animation-container { /* New name for the container */
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	padding: 25px;
+	background: black;
+	color: white;
+	text-align: center;
+	margin: 2px auto;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 330px;
-	height: 340px; /* Adjust height to maintain aspect ratio */
-	margin: auto; /* Ensures centering in flex layout */
+	justify-content: center; /* Center horizontally */
+	align-items: center; /* Center vertically */
+	min-height: 300px; /* Or whatever minimum height you need */
 }
+
+#lottie-container {
+	width: 100%; /* Or a specific width if needed */
+	max-width: 500px; /* Adjust as needed */
+	height: auto; /* Maintain aspect ratio */
+}
+
+/* ... other CSS styles ... */
