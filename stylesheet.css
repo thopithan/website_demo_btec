@@ -114,7 +114,6 @@ a {
 	text-align: center;
 	margin: 2px auto;
 	display: flex;
-	align-items: center;
 	justify-content: center;
 	flex-wrap: wrap;
 }
@@ -230,5 +229,41 @@ a {
 @media (max-width: 600px) {
 	.containerforimages {
 		grid-template-columns: 1fr; /* Stack into a single column on small screens */
+	}
+}
+
+
+.footer {
+	background-color: #000;
+	color: white;
+	text-align: center;
+	padding: 20px;
+}
+.footer a {
+	color: white;
+	text-decoration: none;
+	margin: 0 10px;
+}
+.social-icons {
+	margin-top: 10px;
+}
+.social-icons a {
+	display: inline-flex; /* Aligns icon properly */
+	align-items: center;
+	justify-content: center;
+	width: 40px; /* Adjust size as needed */
+	height: 40px;
+	background-color: #fff; /* Change to your preferred color */
+	border-radius: 50%; /* Makes the background circular */
+	margin: 0 5px;
+}
+.social-icons img {
+	width: 20px;
+	height: 20px;
+
+}
+@media (max-width: 600px) {
+	.footer {
+		font-size: 14px;
 	}
 }
