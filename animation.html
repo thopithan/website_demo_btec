@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>G Bank.com</title>
+    <link type="text/css" rel="stylesheet" href="stylesheet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+
+    <style>
+        /* Center the animation container */
+        #lottie-container {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body style="background-color: #000000; margin: 0; height: 100vh;">
+
+<!-- Header Section -->
+<header class="header">
+    <div class="header-content">
+        <a href="index.html"> <img src="logo.png" alt="Company Logo" class="logo"> </a>
+        <a href="index.html"> <span class="company-name">Bank.com</span></a>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()"><img src="hamburger.png" class="logo" ></a>
+    </div>
+</header>
+
+<!-- Top Navigation Bar -->
+<div class="topnav" id="myTopnav">
+    <a href="index.html">Text</a>
+    <a href="links.html">Links</a>
+    <a href="images.html">Images</a>
+    <a href="colours.html">Colours</a>
+    <a href="tables.html">Tables</a>
+    <a href="audio_video.html">Audio & Video</a>
+    <a href="lists.html">Lists</a>
+    <a href="forms.html">Forms</a>
+    <a href="scripting.html">Scripting</a>
+    <a href="graphics.html">Graphics</a>
+</div>
+
+<!-- Centered Lottie Animation Container -->
+<div id="lottie-container"></div>
+
+<script>
+    // Lottie animation configuration
+    var animation = bodymovin.loadAnimation({
+        container: document.getElementById('lottie-container'), // The container where the animation will be displayed
+        renderer: 'svg', // Render the animation as an SVG
+        loop: true, // Loop the animation
+        autoplay: true, // Start the animation automatically
+        path: 'website-maintenance.json' // Path to your Lottie JSON file
+    });
+</script>
+
+
+</body>
+</html>
