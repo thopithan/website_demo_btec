@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>G Bank.com</title>
+  <link type="text/css" rel="stylesheet" href="stylesheet.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+</head>
+<body style="background-color: #000000;">
+
+<!-- Header Section -->
+<header class="header">
+  <div class="header-content">
+    <!-- Logo and Company Name on the Left -->
+
+    <a href="index.html"> <img src="logo.png" alt="Company Logo" class="logo"> </a>
+    <a href="index.html"> <span class="company-name">Bank.com</span></a>
+    <!-- Hamburger Menu Icon on the Right for Mobile -->
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()"><img src="hamburger.png" class="logo" ></a>
+  </div>
+</header>
+
+<!-- Top Navigation Bar -->
+<div class="topnav" id="myTopnav">
+  <a href="index.html">Text</a>
+  <a href="links.html">Links</a>
+  <a href="images.html">Images</a>
+  <a href="colours.html">Colours</a>
+  <a href="feedback.html">Feedback</a>
+  <a href="audio_video.html">Audio & Video</a>
+  <a href="lists.html">Lists</a>
+  <a href="forms.html">Forms</a>
+  <a href="scripting.html">Scripting</a>
+  <a href="graphics.html">Graphics</a>
+
+</div>
+
+<div class="lottie-animation-container" id="lottie-container">
+</div>
+
+<script>
+  // Lottie animation configuration
+  var animation = bodymovin.loadAnimation({
+    container: document.getElementById('lottie-container'), // The container where the animation will be displayed
+    renderer: 'svg', // Render the animation as an SVG
+    loop: true, // Loop the animation
+    autoplay: true, // Start the animation automatically
+    path: 'website-maintenance.json' // Path to your Lottie JSON file
+  });
+</script>
+
+
+<!-- JavaScript -->
+<script>
+  // Function to toggle the menu on smaller screens
+  function toggleMenu() {
+    const nav = document.getElementById("myTopnav"); // Get the navigation element
+    if (nav.classList.contains("responsive")) {
+      nav.classList.remove("responsive"); // Remove "responsive" class to hide the menu
+    } else {
+      nav.classList.add("responsive"); // Add "responsive" class to show the menu
+    }
+  }
+</script>
+
+
+<footer class="footer">
+  <p>
+    <a href="#">Legals</a> | <a href="#">Privacy</a> | <a href="#">Cookies</a> | <a href="#">Contact Us</a>
+  </p>
+  <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+  <div class="social-icons">
+    <a href="https://www.facebook.com"><img src="instagram.png" alt="Facebook"></a>
+    <a href="https://www.instagram.com"><img src="facebook.png" alt="Facebook"></a>
+    <a href="https://x.com/home"><img src="twittericon.png" alt="Facebook"></a>
+
+  </div>
+</footer>
+</body>
+</html>
