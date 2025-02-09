@@ -31,7 +31,7 @@ a {
 	color: inherit;  /* This will make the link inherit the text colour from its parent */
 }
 .logo {
-	height: 65px; /* Adjust the logo size as needed */
+	height: 50px; /* Adjust the logo size as needed */
 	margin-right: 10px;
 
 }
