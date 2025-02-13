@@ -36,22 +36,8 @@
 
 </div>
 
-<div class="lottie-animation-container" id="lottie-container">
-</div>
 
-<script>
-  // Lottie animation configuration
-  var animation = bodymovin.loadAnimation({
-    container: document.getElementById('lottie-container'), // The container where the animation will be displayed
-    renderer: 'svg', // Render the animation as an SVG
-    loop: true, // Loop the animation
-    autoplay: true, // Start the animation automatically
-    path: 'website-maintenance.json' // Path to your Lottie JSON file
-  });
-</script>
-
-
-<!-- JavaScript -->
+<!-- JavaScript for humbarga rmenu   -->
 <script>
   // Function to toggle the menu on smaller screens
   function toggleMenu() {
@@ -63,6 +49,26 @@
     }
   }
 </script>
+<!--  enf of JavaScript for humbarga rmenu   -->
+
+
+<div class="full-width-container">
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="feedback">Feedback:</label>
+    <textarea id="feedback" name="feedback" required></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+
+
 
 
 <footer class="footer">
