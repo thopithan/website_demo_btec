@@ -66,11 +66,16 @@
   </form>
 </div>
 
-<!--  thanks  -->
+
+<!--  thanks ANIMATION AND THANKS MEASSAGE  -->
 <div class="full-width-container">
 <div id="thank-you-message" style="display:none;">
   <h1>Thank You for Your Feedback!</h1>
   <p style="color: #FF9500">We appreciate you taking the time to share your thoughts.</p>
+  <div class="full-width-container">
+    <div class="lottie-animation-container" id="lottie-container">
+    </div>
+  </div>
 </div>
 </div>
 
@@ -82,6 +87,17 @@
     document.getElementById("thank-you-message").style.display = "block";
     document.querySelector(".full-width-container form").style.display = "none"; // Hide the form
   }
+</script>
+
+<script>
+  // Lottie animation configuration
+  var animation = bodymovin.loadAnimation({
+    container: document.getElementById('lottie-container'), // The container where the animation will be displayed
+    renderer: 'svg', // Render the animation as an SVG
+    loop: true, // Loop the animation
+    autoplay: true, // Start the animation automatically
+    path: 'feedbackanimation.json' // Path to your Lottie JSON file
+  });
 </script>
 
 <!--  end  -->
