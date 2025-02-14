@@ -53,8 +53,7 @@
 
 
 <div class="full-width-container">
-  <form>
-    <label for="name">Name:</label>
+  <form onsubmit="showThankYou()">  <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
 
     <label for="email">Email:</label>
@@ -67,9 +66,25 @@
   </form>
 </div>
 
+<!--  thanks  -->
+<div class="full-width-container">
+<div id="thank-you-message" style="display:none;">
+  <h1>Thank You for Your Feedback!</h1>
+  <p style="color: #FF9500">We appreciate you taking the time to share your thoughts.</p>
+</div>
+</div>
 
+<!--  end  -->
+<script>
+  function showThankYou() {
+    event.preventDefault(); // Prevent form submission
 
+    document.getElementById("thank-you-message").style.display = "block";
+    document.querySelector(".full-width-container form").style.display = "none"; // Hide the form
+  }
+</script>
 
+<!--  end  -->
 
 <footer class="footer">
   <p>

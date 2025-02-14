@@ -436,3 +436,17 @@ input[type="submit"]:hover {
 	background-color: #FF9500;
 }
 /* ... end of form style ... */
+
+/* ... other styles ... */
+
+#thank-you-message {
+	display: none;
+}
+
+#submit-button:target + #thank-you-message {
+	display: block;
+}
+
+#submit-button:target {  /* Hide the button */
+	display: none;
+}
