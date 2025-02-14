@@ -22,7 +22,7 @@
 
 <!-- Top Navigation Bar -->
 <div class="topnav" id="myTopnav">
-  <a href="index.html">Text</a>
+  <a href="index.html">Home</a>
   <a href="links.html">Links</a>
   <a href="images.html">Images</a>
   <a href="colours.html">Colours</a>
@@ -34,22 +34,8 @@
   <a href="graphics.html">Graphics</a>
 </div>
 
-<div class="lottie-animation-container" id="lottie-container">
-</div>
 
-<script>
-  // Lottie animation configuration
-  var animation = bodymovin.loadAnimation({
-    container: document.getElementById('lottie-container'), // The container where the animation will be displayed
-    renderer: 'svg', // Render the animation as an SVG
-    loop: true, // Loop the animation
-    autoplay: true, // Start the animation automatically
-    path: 'website-maintenance.json' // Path to your Lottie JSON file
-  });
-</script>
-
-
-<!-- JavaScript -->
+<!-- JavaScript for humbergar icon   -->
 <script>
   // Function to toggle the menu on smaller screens
   function toggleMenu() {
@@ -61,6 +47,62 @@
     }
   }
 </script>
+
+
+// first audio player
+<div class="audio-grid-container">  <div class="audio-grid-item">  <div class="audio-player">
+  <img src="leo-poster.jpg" alt="Audio 1 Image">
+  <div class="audio-details">
+    <h3>Bloody Sweet</h3>
+    <p>Music: Anirudh Ravichander</p>
+  </div>
+  <audio controls>
+    <source src="Bloody-Sweet-MassTamilan.dev.mp3" type="audio/mpeg">
+    <source src="audio1.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+  <div class="item-description">Lyricists: Heisenberg, Asal Kolaar, Vishnu Edavan
+    Length: 02:48</div>  </div>
+
+
+
+  // second audio player
+  <div class="audio-grid-item">  <div class="audio-player">
+    <img src="leo-poster.jpg" alt="Audio 2 Image">
+    <div class="audio-details">
+      <h3>Audio Title 2</h3>
+      <p>Short description of audio track 2.</p>
+    </div>
+    <audio controls>
+      <source src="Bloody-Sweet-MassTamilan.dev.mp3" type="audio/mpeg">
+      <source src="audio2.ogg" type="audio/ogg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+    <div class="item-description">Description related to image 2 or overall context</div>  </div>
+
+
+  // third audio player
+  <div class="audio-grid-item">  <div class="audio-player">
+    <img src="leo-poster.jpg" alt="Audio 3 Image">
+    <div class="audio-details">
+      <h3>Audio Title 3</h3>
+      <p>Short description of audio track 3.</p>
+    </div>
+    <audio controls>
+      <source src="Bloody-Sweet-MassTamilan.dev.mp3" type="audio/mpeg">
+      <source src="audio3.ogg" type="audio/ogg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+    <div class="item-description">Description related to image 3 or overall context</div>  </div>
+</div>
+
+
+
+
+
 
 
 <footer class="footer">
