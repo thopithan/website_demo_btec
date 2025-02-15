@@ -97,56 +97,91 @@
         const mediaItem = this.closest('.media-item');
         const videoContainer = mediaItem.querySelector('.media-video');
         const video = videoContainer.querySelector('video');
+        const videoSource = video.currentSrc || video.src;
         const thumbnail = mediaItem.querySelector('.thumbnail');
         const playButton = mediaItem.querySelector('.play-button');
 
-        // 1. Hide controls and thumbnail IMMEDIATELY
-        mediaItem.classList.add('playing');
-        thumbnail.style.display = 'none';
-        playButton.style.display = 'none';
+        // 1. Create Fullscreen Container
+        const fullscreenContainer = document.createElement('div');
+        fullscreenContainer.classList.add('fullscreen-container');
+        fullscreenContainer.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* Prevent scrollbars */
+      `;
 
-        // 2. Mute video (for autoplay on mobile)
-        video.muted = true;
+        // 2. Create Video Element
+        const fullscreenVideo = document.createElement('video');
+        fullscreenVideo.src = videoSource;
+        fullscreenVideo.controls = true; // Essential for iOS controls
+        fullscreenVideo.autoplay = true;
+        fullscreenVideo.muted = false; // Unmute if autoplay succeeds
 
-        // 3. Request fullscreen first, then play the video
-        if (video.requestFullscreen) {
-          video.requestFullscreen();
-        } else if (video.mozRequestFullScreen) {
-          video.mozRequestFullScreen();
-        } else if (video.webkitRequestFullscreen) {
-          video.webkitRequestFullscreen(); // For Safari on iOS
-        } else if (video.msRequestFullscreen) {
-          video.msRequestFullscreen();
-        }
+        fullscreenVideo.style.cssText = `
+        max-width: 100%;  /* Ensure video fits within container */
+        max-height: 100%; /* Ensure video fits within container */
+      `;
 
-        // 4. Play the video AFTER requesting fullscreen
-        video.play().then(() => {
-          // Unmute after successful play
-          video.muted = false;
-        }).catch(error => {
-          console.error('Autoplay/Fullscreen Error:', error);
-          // Important: Show the thumbnail and play button again if there's an error
-          thumbnail.style.display = 'block';
-          playButton.style.display = 'block';
-          mediaItem.classList.remove('playing');
-          // Optionally, display an error message to the user
-          alert("Error playing video: " + error.message);
+        fullscreenContainer.appendChild(fullscreenVideo);
+        document.body.appendChild(fullscreenContainer);
+
+        // 3. Play the video
+        fullscreenVideo.play().catch(error => {
+          console.error("Autoplay Error:", error);
+          // Handle autoplay failure (e.g., show a play button on the fullscreen container)
+          const playOverlay = document.createElement('div');
+          playOverlay.style.cssText = `
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: rgba(0, 0, 0, 0.5);
+          color: white;
+          padding: 20px;
+          cursor: pointer;
+        `;
+          playOverlay.textContent = "Tap to Play";
+          fullscreenContainer.appendChild(playOverlay);
+          playOverlay.addEventListener('click', () => {
+            fullscreenVideo.play().catch(err => console.error("Play Error:", err));
+            fullscreenContainer.removeChild(playOverlay); // Remove overlay after tap
+          });
         });
 
-        // 5. Fullscreen change listener (important for resetting state)
-        document.addEventListener('fullscreenchange', exitHandler);
-        document.addEventListener('webkitfullscreenchange', exitHandler);
+        // 4. Close Fullscreen
+        fullscreenContainer.addEventListener('click', function() {
+          document.body.removeChild(fullscreenContainer);
+          video.pause();
+          resetVideoState(mediaItem, video); // Call reset function
+        });
 
-        function exitHandler() {
-          // Check if we are exiting fullscreen mode
-          if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-            mediaItem.classList.remove('playing');
-            thumbnail.style.display = 'block';
-            playButton.style.display = 'block';
-            video.pause();
-            video.currentTime = 0;
-          }
+        // Optional: Close Button
+        const closeButton = document.createElement('button');
+        closeButton.textContent = "Close";
+        // ... (rest of the close button code remains the same)
+
+        // Reset Function (moved outside the event listener)
+        function resetVideoState(mediaItem, video) {
+          mediaItem.classList.remove('playing');
+          thumbnail.style.display = 'block';
+          playButton.style.display = 'block';
+          video.pause();
+          video.currentTime = 0;
         }
+
+        thumbnail.style.display = 'block';
+        playButton.style.display = 'block';
+        mediaItem.classList.remove('playing');
+        video.pause();
+        video.currentTime = 0;
       });
     });
   });
