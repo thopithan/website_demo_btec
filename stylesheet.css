@@ -543,6 +543,8 @@ input[type="submit"]:hover {
 	background-color: black; /* Added background color */
 }
 
+
+
 /* Container for image and play button */
 .media-item-content {
 	display: flex;

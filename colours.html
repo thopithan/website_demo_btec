@@ -33,7 +33,7 @@
 <div class="media-row">
   <div class="media-item">
     <div class="media-item-content">
-      <img src="leo-poster.jpg" alt="Video Thumbnail" class="thumbnail">
+      <img src="leo-poster.jpg" alt="Video 1 Thumbnail" class="thumbnail">
       <button class="play-button">▶ Play</button>
     </div>
     <div class="media-video">
@@ -44,11 +44,48 @@
       </video>
     </div>
     <div class="media-details">
-      <h3>Bloody Sweet</h3>
-      <p>Movie: LEO <br> Composer: Anirudh Ravichander <br> Vocals: Siddharth Basrur</p>
+      <h3>Video 1 Title</h3>
+      <p>Video 1 Description</p>
+    </div>
+  </div>
+
+  <div class="media-item">
+    <div class="media-item-content">
+      <img src="leo-poster.jpg" alt="Video 2 Thumbnail" class="thumbnail">
+      <button class="play-button">▶ Play</button>
+    </div>
+    <div class="media-video">
+      <video class="media-content" controls preload="metadata" playsinline>
+        <source src="LEO-Bloody-Sweet.mp4" type="video/mp4">
+        <source src="LEO-Bloody-Sweet.webm" type="video/webm">
+        Your browser does not support the video element.
+      </video>
+    </div>
+    <div class="media-details">
+      <h3>Video 2 Title</h3>
+      <p>Video 2 Description</p>
+    </div>
+  </div>
+
+  <div class="media-item">
+    <div class="media-item-content">
+      <img src="leo-poster.jpg" alt="Video 3 Thumbnail" class="thumbnail">
+      <button class="play-button">▶ Play</button>
+    </div>
+    <div class="media-video">
+      <video class="media-content" controls preload="metadata" playsinline>
+        <source src="LEO-Bloody-Sweet.mp4" type="video/mp4">
+        <source src="LEO-Bloody-Sweet.webm" type="video/webm">
+        Your browser does not support the video element.
+      </video>
+    </div>
+    <div class="media-details">
+      <h3>Video 3 Title</h3>
+      <p>Video 3 Description</p>
     </div>
   </div>
 </div>
+
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -85,33 +122,28 @@
 
         // Exit fullscreen handling (modified for iOS)
         document.addEventListener('webkitfullscreenchange', exitHandler); // iOS uses webkit prefix
+        document.addEventListener('fullscreenchange', exitHandler); // Standard event
 
         function exitHandler() {
-          if (!document.webkitFullscreenElement) { // Check webkit for iOS
+          if (!document.webkitFullscreenElement && !document.fullscreenElement) { // Check webkit AND standard for iOS and other browsers
             mediaItem.classList.remove("playing");
             thumbnail.style.display = "block";
             playButton.style.display = "block";
             video.pause();
+            video.currentTime = 0; // Reset video to the beginning (optional)
+
           }
         }
 
-        video.addEventListener('pause', () => {
-          if (!document.webkitFullscreenElement) { // iOS check
-            mediaItem.classList.remove("playing");
-            thumbnail.style.display = "block";
-            playButton.style.display = "block";
-          }
-        });
+        // The 'pause' and 'ended' listeners are no longer needed
+        // because the exitHandler handles pausing and resetting.
 
-        video.addEventListener('ended', () => {
-          mediaItem.classList.remove("playing");
-          thumbnail.style.display = "block";
-          playButton.style.display = "block";
-        });
+
       });
     });
   });
 </script>
+
 
 <footer class="footer">
   <p>
