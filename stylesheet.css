@@ -626,5 +626,31 @@ input[type="submit"]:hover {
 		width: 100%; /* 1 item per row */
 	}
 }
+.media-item {
+	position: relative; /* Needed for absolute positioning of video */
+	width: 100%; /* Occupy full width */
+	height: 100%; /* Occupy full height */
+}
 
+.media-video {
+	width: 100%;
+	height: 100%;
+}
+
+.media-video video {
+	width: 100%;
+	height: 100%;
+	object-fit: contain; /* or cover, depending on your preference */
+}
+
+/* Styles specifically for fullscreen mode */
+video:-webkit-full-screen, /* Safari */
+video:-moz-full-screen, /* Firefox */
+video:fullscreen { /* Standard syntax */
+	width: 100%;
+	height: 100%;
+	object-fit: contain; /* or cover */
+}
+
+/* ... other styles ... */
 /* ... rest of your CSS ... */
