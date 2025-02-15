@@ -522,36 +522,37 @@ input[type="submit"]:hover {
 	width: 100%;
 }
 
-
-
 /* ... (all your existing CSS) ... */
 
-/* video */
-/* Common styles for media items (both audio and video) */
+.media-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+	justify-content: center;
+	padding: 20px;
+}
+
 .media-item {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: calc(33.33% - 30px); /* 3 items per row, adjust as needed */
+	width: calc(33.33% - 30px); /* 3 items per row */
 	margin-bottom: 30px;
-	position: relative;
-	text-align: center; /* Center text within details */
-	padding: 20px; /* Add padding inside each item */
-	border: 3px solid #FF9500; /* Optional: Add a border */
-	border-radius: 8px; /* Optional: Rounded corners */
-	box-sizing: border-box; /* Include padding and border in width */
-	background-color: black; /* Added background color */
+	position: relative; /* Important for video positioning */
+	text-align: center;
+	padding: 20px;
+	border: 3px solid #FF9500;
+	border-radius: 8px;
+	box-sizing: border-box;
+	background-color: black;
+	overflow: hidden; /* Prevents video from overflowing during fullscreen */
 }
 
-
-
-/* Container for image and play button */
 .media-item-content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-right: 0; /* Remove right margin */
-	margin-bottom: 20px; /* Space between image/button and details */
+	margin-bottom: 20px;
 }
 
 .media-item img {
@@ -564,95 +565,57 @@ input[type="submit"]:hover {
 	display: block;
 }
 
-.play-button {
-	background-color: white; /* Initial background color */
-	color: black; /* Initial text color */
-	padding: 10px 15px;
-	border: none;
-	border-radius: 3px;
-	cursor: pointer;
-	transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-}
-
-.play-button:hover {
-	background-color: #FF9500; /* Slightly darker background on hover */
-}
-
-.play-button:active { /* Styles when the button is clicked */
-	background-color: #FF9500; /* Even darker background when clicked */
-	color: #333; /* Darker text color when clicked */
-}
-
-.media-details {
-	flex: 1; /* Allow details to take up remaining space */
-	color: white;
-}
-
-.media-details h3 {
-	margin: 0 0 5px 0;
-}
-
-.media-details p {
-	font-size: smaller;
-	margin: 0;
-}
+.play-button { /* ... (styles remain the same) ... */ }
+.media-details { /* ... (styles remain the same) ... */ }
 
 .media-video {
-	width: 100%;
-	max-width: 600px;
-	display: none; /* Initially hidden */
-}
-
-.media-item.playing .media-video { /* Show video when playing */
-	display: block;
-}
-
-/* Container for the row of media items */
-.media-row {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 30px;
-	justify-content: center;
-	padding: 20px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-	.media-item {
-		width: calc(50% - 30px); /* 2 items per row */
-	}
-}
-
-@media (max-width: 480px) {
-	.media-item {
-		width: 100%; /* 1 item per row */
-	}
-}
-.media-item {
-	position: relative; /* Needed for absolute positioning of video */
-	width: 100%; /* Occupy full width */
-	height: 100%; /* Occupy full height */
-}
-
-.media-video {
+	position: absolute; /* Position the video over the entire item */
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
+	display: none; /* Initially hidden */
 }
 
 .media-video video {
 	width: 100%;
 	height: 100%;
-	object-fit: contain; /* or cover, depending on your preference */
+	object-fit: contain; /* Or cover, as needed */
 }
 
-/* Styles specifically for fullscreen mode */
-video:-webkit-full-screen, /* Safari */
-video:-moz-full-screen, /* Firefox */
-video:fullscreen { /* Standard syntax */
-	width: 100%;
-	height: 100%;
-	object-fit: contain; /* or cover */
+.media-item.playing .media-video {
+	display: block;
 }
 
-/* ... other styles ... */
-/* ... rest of your CSS ... */
+/* Styles specifically for fullscreen mode (REVISED) */
+.media-item:-webkit-full-screen, /* Safari */
+.media-item:-moz-full-screen, /* Firefox */
+.media-item:fullscreen { /* Standard syntax */
+	width: 100%; /* Take full width of the screen */
+	height: 100%; /* Take full height of the screen */
+	max-width: none; /* Remove any max-width restrictions */
+}
+
+.media-item:-webkit-full-screen .media-video video, /* Safari */
+.media-item:-moz-full-screen .media-video video, /* Firefox */
+.media-item:fullscreen .media-video video { /* Standard syntax */
+	object-fit: contain; /* Or cover, as needed */
+}
+
+/* Responsive adjustments (remain the same) */
+@media (max-width: 768px) { /* ... */ }
+@media (max-width: 480px) { /* ... */ }
+
+/* Responsive adjustments */
+@media (max-width: 768px) { /* Tablet and smaller */
+	.media-item {
+		width: calc(50% - 30px); /* 2 items per row */
+	}
+}
+
+@media (max-width: 480px) { /* Phone and smaller */
+	.media-item {
+		width: 100%; /* 1 item per row (one by one) */
+		margin-bottom: 30px; /* Add margin between items on mobile */
+	}
+}
