@@ -68,40 +68,35 @@
 
         video.muted = false;
 
-        // Fullscreen logic:
+        // Request fullscreen FIRST (important for iOS)
         if (video.requestFullscreen) {
           video.requestFullscreen();
-        } else if (video.mozRequestFullScreen) { /* Firefox */
+        } else if (video.mozRequestFullScreen) {
           video.mozRequestFullScreen();
-        } else if (video.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-          video.webkitRequestFullscreen();
-        } else if (video.msRequestFullscreen) { /* IE/Edge */
+        } else if (video.webkitRequestFullscreen) {
+          video.webkitRequestFullscreen(); // Crucial for iOS
+        } else if (video.msRequestFullscreen) {
           video.msRequestFullscreen();
         }
 
-        video.play().catch(error => console.error("Autoplay Error:", error));
+        // THEN, play the video (after the fullscreen request)
+        video.play().catch(error => console.error("Autoplay/Fullscreen Error:", error));
 
 
-        // Exit fullscreen and close video on minimize/escape:
-        document.addEventListener('fullscreenchange', exitHandler);
-        document.addEventListener('webkitfullscreenchange', exitHandler);
-        document.addEventListener('mozfullscreenchange', exitHandler);
-        document.addEventListener('MSFullscreenChange', exitHandler);
+        // Exit fullscreen handling (modified for iOS)
+        document.addEventListener('webkitfullscreenchange', exitHandler); // iOS uses webkit prefix
 
         function exitHandler() {
-          if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
-            // Video exited fullscreen
+          if (!document.webkitFullscreenElement) { // Check webkit for iOS
             mediaItem.classList.remove("playing");
             thumbnail.style.display = "block";
             playButton.style.display = "block";
-            video.pause(); // Stop the video
+            video.pause();
           }
         }
 
-
-
         video.addEventListener('pause', () => {
-          if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement){
+          if (!document.webkitFullscreenElement) { // iOS check
             mediaItem.classList.remove("playing");
             thumbnail.style.display = "block";
             playButton.style.display = "block";
@@ -116,8 +111,6 @@
       });
     });
   });
-
-  // ... (rest of your script) ...
 </script>
 
 <footer class="footer">
