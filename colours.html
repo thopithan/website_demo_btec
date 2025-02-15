@@ -86,7 +86,6 @@
   </div>
 </div>
 
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const playButtons = document.querySelectorAll(".play-button");
@@ -103,7 +102,7 @@
         thumbnail.style.display = "none";
         playButton.style.display = "none";
 
-        video.muted = false;
+        video.muted = true;  // Start with muted for autoplay compatibility
 
         // Request fullscreen FIRST (important for iOS)
         if (video.requestFullscreen) {
@@ -119,7 +118,6 @@
         // THEN, play the video (after the fullscreen request)
         video.play().catch(error => console.error("Autoplay/Fullscreen Error:", error));
 
-
         // Exit fullscreen handling (modified for iOS)
         document.addEventListener('webkitfullscreenchange', exitHandler); // iOS uses webkit prefix
         document.addEventListener('fullscreenchange', exitHandler); // Standard event
@@ -131,14 +129,8 @@
             playButton.style.display = "block";
             video.pause();
             video.currentTime = 0; // Reset video to the beginning (optional)
-
           }
         }
-
-        // The 'pause' and 'ended' listeners are no longer needed
-        // because the exitHandler handles pausing and resetting.
-
-
       });
     });
   });
