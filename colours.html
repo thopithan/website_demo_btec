@@ -128,16 +128,16 @@
           playButton.style.display = 'block';
           mediaItem.classList.remove('playing');
           // Optionally, display an error message to the user
-          alert("Error playing video: " + error.message); // Or a nicer alert
+          alert("Error playing video: " + error.message);
         });
 
-
         // 5. Fullscreen change listener (important for resetting state)
-        document.addEventListener('webkitfullscreenchange', exitHandler);
         document.addEventListener('fullscreenchange', exitHandler);
+        document.addEventListener('webkitfullscreenchange', exitHandler);
 
         function exitHandler() {
-          if (!document.webkitFullscreenElement && !document.fullscreenElement) {
+          // Check if we are exiting fullscreen mode
+          if (!document.fullscreenElement && !document.webkitFullscreenElement) {
             mediaItem.classList.remove('playing');
             thumbnail.style.display = 'block';
             playButton.style.display = 'block';
