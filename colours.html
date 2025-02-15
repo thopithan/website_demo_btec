@@ -9,18 +9,14 @@
 </head>
 <body style="background-color: #000000;">
 
-<!-- Header Section -->
 <header class="header">
   <div class="header-content">
-    <!-- Logo and Company Name on the Left -->
-
-    <a href="index.html"> <img src="logo.png" alt="Company Logo" class="logo"> </a>
-    <a href="index.html"> <span class="company-name">Bank.com</span></a>
-    <!-- Hamburger Menu Icon on the Right for Mobile -->
-    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()"><img src="hamburger.png" class="logo" ></a>
+    <a href="index.html"><img src="logo.png" alt="Company Logo" class="logo"></a>
+    <a href="index.html"><span class="company-name">Bank.com</span></a>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()"><img src="hamburger.png" class="logo"></a>
   </div>
 </header>
-<!-- Top Navigation Bar -->
+
 <div class="topnav" id="myTopnav">
   <a href="index.html">Text</a>
   <a href="links.html">Links</a>
@@ -34,119 +30,73 @@
   <a href="graphics.html">Graphics</a>
 </div>
 
-<!-- JavaScript -->
+<div class="media-row">
+  <div class="media-item">
+    <div class="media-item-content">
+      <img src="leo-poster.jpg" alt="Video Thumbnail" class="thumbnail">
+      <button class="play-button">▶ Play</button>
+    </div>
+    <div class="media-video">
+      <video class="media-content" controls preload="metadata" playsinline>
+        <source src="LEO-Bloody-Sweet.mp4" type="video/mp4">
+        <source src="LEO-Bloody-Sweet.webm" type="video/webm">
+        Your browser does not support the video element.
+      </video>
+    </div>
+    <div class="media-details">
+      <h3>Bloody Sweet</h3>
+      <p>Movie: LEO <br> Composer: Anirudh Ravichander <br> Vocals: Siddharth Basrur</p>
+    </div>
+  </div>
+
+  <div class="media-item">
+    <div class="media-item-content">
+      <img src="leo-poster.jpg" alt="Video 2 Thumbnail" class="thumbnail">
+      <button class="play-button">▶ Play</button>
+    </div>
+    <div class="media-video">
+      <video class="media-content" controls preload="metadata" playsinline>
+        <source src="video2.mp4" type="video/mp4">  <source src="video2.webm" type="video/webm"> Your browser does not support the video element.
+      </video>
+    </div>
+    <div class="media-details">
+      <h3>Video 2 Title</h3>  <p>Video 2 Description</p> </div>
+  </div>
+
+</div>
+
 <script>
-  // Function to toggle the menu on smaller screens
   function toggleMenu() {
-    const nav = document.getElementById("myTopnav"); // Get the navigation element
-    if (nav.classList.contains("responsive")) {
-      nav.classList.remove("responsive"); // Remove "responsive" class to hide the menu
-    } else {
-      nav.classList.add("responsive"); // Add "responsive" class to show the menu
-    }
+    document.getElementById("myTopnav").classList.toggle("responsive");
   }
-</script>
 
-
-<div class="media-row">
-  <!-- Media Item 1 -->
-  <div class="media-item">
-    <div class="media-item-content">
-      <img src="leo-poster.jpg" alt="Video Thumbnail" class="thumbnail">
-      <button class="play-button">▶ Play</button>
-    </div>
-    <div class="media-video">
-      <video controls width="100%">
-        <source src="LEO%20-%20Bloody%20Sweet%20.mp4" type="video/mp4">
-        <source src="LEO%20-%20Bloody%20Sweet%20.webm" type="video/webm">
-        Your browser does not support the video element.
-      </video>
-    </div>
-    <div class="media-details">
-      <h3>Sample Video</h3>
-      <p>Duration: 2 min</p>
-    </div>
-  </div>
-
-  <!-- You can duplicate this block for more media items -->
-
-</div>
-
-
-
-<div class="media-row">
-  <!-- Media Item 1 -->
-  <div class="media-item">
-    <div class="media-item-content">
-      <img src="leo-poster.jpg" alt="Video Thumbnail" class="thumbnail">
-      <button class="play-button">▶ Play</button>
-    </div>
-    <div class="media-video">
-      <video controls width="100%">
-        <source src="LEO%20-%20Bloody%20Sweet%20.mp4" type="video/mp4">
-        <source src="LEO%20-%20Bloody%20Sweet%20.webm" type="video/webm">
-        Your browser does not support the video element.
-      </video>
-    </div>
-    <div class="media-details">
-      <h3>Sample Video</h3>
-      <p>Duration: 2 min</p>
-    </div>
-  </div>
-
-  <!-- You can duplicate this block for more media items -->
-
-</div>
-
-
-<div class="media-row">
-  <!-- Media Item 1 -->
-  <div class="media-item">
-    <div class="media-item-content">
-      <img src="leo-poster.jpg" alt="Video Thumbnail" class="thumbnail">
-      <button class="play-button">▶ Play</button>
-    </div>
-    <div class="media-video">
-      <video controls width="100%">
-        <source src="LEO%20-%20Bloody%20Sweet%20.mp4" type="video/mp4">
-        <source src="LEO%20-%20Bloody%20Sweet%20.webm" type="video/webm">
-        Your browser does not support the video element.
-      </video>
-    </div>
-    <div class="media-details">
-      <h3>Sample Video</h3>
-      <p>Duration: 2 min</p>
-    </div>
-  </div>
-
-  <!-- You can duplicate this block for more media items -->
-
-</div>
-
-
-
-
-
-<script>
   document.querySelectorAll(".play-button").forEach(button => {
     button.addEventListener("click", function() {
       const mediaItem = this.closest(".media-item");
-      const videoContainer = mediaItem.querySelector(".media-video");
-      const video = videoContainer.querySelector("video");
+      const media = mediaItem.querySelector(".media-content");
       const thumbnail = mediaItem.querySelector(".thumbnail");
 
-      // Hide thumbnail and play button
+      mediaItem.classList.add("playing"); // Add 'playing' class
+      media.muted = false;
+      media.play().catch(error => console.warn("Autoplay blocked:", error));
+
       thumbnail.style.opacity = "0";
       this.style.display = "none";
 
-      // Show and play video
-      videoContainer.style.display = "block";
-      video.play();
+      media.addEventListener('pause', () => {
+        mediaItem.classList.remove("playing");
+        thumbnail.style.opacity = "1";
+        this.style.display = "block";
+      });
+
+      media.addEventListener('ended', () => {
+        mediaItem.classList.remove("playing");
+        thumbnail.style.opacity = "1";
+        this.style.display = "block";
+      });
     });
   });
 </script>
-
-
 
 
 <footer class="footer">
@@ -158,8 +108,8 @@
     <a href="https://www.facebook.com"><img src="instagram.png" alt="Facebook"></a>
     <a href="https://www.instagram.com"><img src="facebook.png" alt="Facebook"></a>
     <a href="https://x.com/home"><img src="twittericon.png" alt="Facebook"></a>
-
   </div>
 </footer>
+
 </body>
 </html>
