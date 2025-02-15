@@ -7,7 +7,7 @@
   <link type="text/css" rel="stylesheet" href="stylesheet.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
 </head>
-<body style="background-color: #000000;">
+<body style="background-color: black;">
 
 <!-- Header Section -->
 <header class="header">
@@ -20,7 +20,6 @@
     <a href="javascript:void(0);" class="icon" onclick="toggleMenu()"><img src="hamburger.png" class="logo" ></a>
   </div>
 </header>
-
 <!-- Top Navigation Bar -->
 <div class="topnav" id="myTopnav">
   <a href="index.html">Text</a>
@@ -35,22 +34,8 @@
   <a href="graphics.html">Graphics</a>
 </div>
 
-<div class="lottie-animation-container" id="lottie-container">
-</div>
-
-<script>
-  // Lottie animation configuration
-  var animation = bodymovin.loadAnimation({
-    container: document.getElementById('lottie-container'), // The container where the animation will be displayed
-    renderer: 'svg', // Render the animation as an SVG
-    loop: true, // Loop the animation
-    autoplay: true, // Start the animation automatically
-    path: 'website-maintenance.json' // Path to your Lottie JSON file
-  });
-</script>
 
 
-<!-- JavaScript -->
 <script>
   // Function to toggle the menu on smaller screens
   function toggleMenu() {
@@ -62,6 +47,96 @@
     }
   }
 </script>
+
+
+<br>
+<form id="userForm">
+  <label for="firstName">First Name:</label>
+  <input type="text" id="firstName" name="firstName" required>
+
+  <label for="lastName">Last Name:</label>
+  <input type="text" id="lastName" name="lastName" required>
+
+  <label for="dob">Date of Birth:</label>
+  <input type="date" id="dob" name="dob" required>
+
+  <label for="age">Age:</label>
+  <input type="text" id="age" name="age" readonly>
+
+  <label for="nationality">Nationality:</label>
+  <input type="text" id="nationality" name="nationality" required>
+
+  <label for="countyOfBirth">County of Birth:</label>
+  <input type="text" id="countyOfBirth" name="countyOfBirth" required>
+
+  <label for="address">Home Address:</label>
+  <textarea id="address" name="address" required></textarea>
+
+  <label for="postcode">Postcode:</label>
+  <input type="text" id="postcode" name="postcode" required>
+
+  <label for="telNumber">Telephone Number:</label>
+  <input type="tel" id="telNumber" name="telNumber" required>
+
+  <label for="email">Email Address:</label>
+  <input type="email" id="email" name="email" required>
+
+  <div class="contact-preference">
+    <p>Contact Preference:</p>
+    <label><input type="checkbox" name="contactPreference[]" value="email"> Email</label>
+    <label><input type="checkbox" name="contactPreference[]" value="tel"> Telephone</label>
+    <label><input type="checkbox" name="contactPreference[]" value="post"> Post</label>
+  </div>
+
+  <input type="submit" value="Submit">
+</form>
+
+<!-- Thank You Message (Hidden by Default) -->
+<div class="full-width-container" id="thank-you-message" style="display:none;">
+  <h1>Thank You for Your Feedback!</h1>
+  <p style="color: #FF9500">We appreciate you taking the time to share your thoughts.</p>
+  <div class="lottie-animation-container" id="lottie-container"></div>
+</div>
+
+<script>
+  // Prevent form submission and show the Thank You message
+  document.getElementById("userForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Stop form submission
+
+    document.getElementById("thank-you-message").style.display = "block";
+    document.getElementById("userForm").style.display = "none"; // Hide the form
+  });
+
+  // Calculate age from date of birth
+  document.getElementById("dob").addEventListener("change", function() {
+    const dob = new Date(this.value);
+    if (isNaN(dob.getTime())) return;
+
+    const today = new Date();
+    let age = today.getFullYear() - dob.getFullYear();
+    const month = today.getMonth() - dob.getMonth();
+
+    if (month < 0 || (month === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+
+    document.getElementById("age").value = age;
+  });
+
+  // Lottie Animation for Thank You Message
+  var animation = bodymovin.loadAnimation({
+    container: document.getElementById('lottie-container'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'feedbackanimation.json'
+  });
+</script>
+
+
+<br>
+
+
 
 <footer class="footer">
   <p>

@@ -668,3 +668,109 @@ input[type="submit"]:hover {
 		margin-bottom: 30px; /* Add margin between items on mobile */
 	}
 }
+
+/* Mobile-friendly form styling */
+form {
+	width: 90%; /* Adjust width for smaller screens */
+	max-width: 400px; /* Limit max width */
+	margin: 20px auto;
+	padding: 20px;
+	border: 3px solid #FF9500;
+	border-radius: 8px;
+	background-color: black;
+	color: white;
+	box-shadow: 0 0 10px rgba(255, 149, 0, 0.3);
+}
+
+/* Labels */
+label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+	color: white;
+	font-size: 14px; /* Adjust font size for mobile */
+}
+
+/* Input and Textarea Styling */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea {
+	width: 100%;
+	padding: 12px; /* Increased padding for better touch experience */
+	margin-bottom: 12px;
+	border: 1px solid #FF9500;
+	border-radius: 5px;
+	box-sizing: border-box;
+	background-color: #222;
+	color: white;
+	font-size: 16px; /* Adjust font size for readability */
+	transition: 0.3s;
+}
+
+/* Input focus effect */
+input:focus,
+textarea:focus {
+	outline: none;
+	border-color: white;
+	box-shadow: 0 0 5px rgba(255, 149, 0, 0.8);
+}
+
+/* Submit Button */
+input[type="submit"] {
+	background-color: white;
+	color: black;
+	padding: 14px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 16px; /* Larger text for mobile */
+	width: 100%; /* Full width for easier access */
+	transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+	background-color: #FF9500;
+	color: white;
+}
+
+/* Contact Preference Styling */
+.contact-preference {
+	margin-bottom: 15px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.contact-preference label {
+	display: flex;
+	align-items: center;
+	margin-right: 15px;
+	font-size: 14px;
+	color: white;
+	cursor: pointer;
+}
+
+.contact-preference input {
+	margin-right: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+	form {
+		width: 95%; /* Adjust width for smaller phones */
+		padding: 15px;
+	}
+
+	input,
+	textarea {
+		font-size: 14px; /* Adjust font size for small screens */
+		padding: 10px;
+	}
+
+	input[type="submit"] {
+		font-size: 14px;
+		padding: 12px;
+	}
+}
