@@ -30,7 +30,9 @@
   <a href="graphics.html">Graphics</a>
 </div>
 
+<!-- Media Gallery -->
 <div class="media-row">
+  <!-- Media Item -->
   <div class="media-item">
     <div class="media-item-content">
       <img src="leo-poster.jpg" alt="Video Thumbnail" class="thumbnail">
@@ -48,56 +50,36 @@
       <p>Movie: LEO <br> Composer: Anirudh Ravichander <br> Vocals: Siddharth Basrur</p>
     </div>
   </div>
-
-  <div class="media-item">
-    <div class="media-item-content">
-      <img src="leo-poster.jpg" alt="Video 2 Thumbnail" class="thumbnail">
-      <button class="play-button">▶ Play</button>
-    </div>
-    <div class="media-video">
-      <video class="media-content" controls preload="metadata" playsinline>
-        <source src="video2.mp4" type="video/mp4">  <source src="video2.webm" type="video/webm"> Your browser does not support the video element.
-      </video>
-    </div>
-    <div class="media-details">
-      <h3>Video 2 Title</h3>  <p>Video 2 Description</p> </div>
-  </div>
-
 </div>
 
 <script>
-  function toggleMenu() {
-    document.getElementById("myTopnav").classList.toggle("responsive");
-  }
+  document.addEventListener("DOMContentLoaded", function () {
+    const playButtons = document.querySelectorAll(".play-button");
 
-  document.querySelectorAll(".play-button").forEach(button => {
-    button.addEventListener("click", function() {
-      const mediaItem = this.closest(".media-item");
-      const media = mediaItem.querySelector(".media-content");
-      const thumbnail = mediaItem.querySelector(".thumbnail");
+    playButtons.forEach(button => {
+      button.addEventListener("click", function () {
+        const videoContainer = this.closest(".media-item").querySelector(".media-video");
 
-      mediaItem.classList.add("playing"); // Add 'playing' class
-      media.muted = false;
-      media.play().catch(error => console.warn("Autoplay blocked:", error));
+        if (videoContainer) {
+          videoContainer.style.display = "block"; // Show the video
+          const video = videoContainer.querySelector("video");
 
-      thumbnail.style.opacity = "0";
-      this.style.display = "none";
+          if (video.requestFullscreen) {
+            video.requestFullscreen();
+          } else if (video.mozRequestFullScreen) {
+            video.mozRequestFullScreen();
+          } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+          } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+          }
 
-      media.addEventListener('pause', () => {
-        mediaItem.classList.remove("playing");
-        thumbnail.style.opacity = "1";
-        this.style.display = "block";
-      });
-
-      media.addEventListener('ended', () => {
-        mediaItem.classList.remove("playing");
-        thumbnail.style.opacity = "1";
-        this.style.display = "block";
+          video.play(); // Start playing
+        }
       });
     });
   });
 </script>
-
 
 <footer class="footer">
   <p>
