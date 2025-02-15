@@ -89,48 +89,60 @@
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const playButtons = document.querySelectorAll(".play-button");
+  document.addEventListener('DOMContentLoaded', function() {
+    const playButtons = document.querySelectorAll('.play-button');
 
     playButtons.forEach(button => {
-      button.addEventListener("click", function () {
-        const mediaItem = this.closest(".media-item");
-        const videoContainer = mediaItem.querySelector(".media-video");
-        const video = videoContainer.querySelector("video");
-        const thumbnail = mediaItem.querySelector(".thumbnail");
-        const playButton = mediaItem.querySelector(".play-button");
+      button.addEventListener('click', function() {
+        const mediaItem = this.closest('.media-item');
+        const videoContainer = mediaItem.querySelector('.media-video');
+        const video = videoContainer.querySelector('video');
+        const thumbnail = mediaItem.querySelector('.thumbnail');
+        const playButton = mediaItem.querySelector('.play-button');
 
-        mediaItem.classList.add("playing");
-        thumbnail.style.display = "none";
-        playButton.style.display = "none";
+        // 1. Hide controls and thumbnail IMMEDIATELY
+        mediaItem.classList.add('playing');
+        thumbnail.style.display = 'none';
+        playButton.style.display = 'none';
 
-        video.muted = true;  // Start with muted for autoplay compatibility
+        // 2. Mute video (for autoplay on mobile)
+        video.muted = true;
 
-        // Request fullscreen FIRST (important for iOS)
-        if (video.requestFullscreen) {
-          video.requestFullscreen();
-        } else if (video.mozRequestFullScreen) {
-          video.mozRequestFullScreen();
-        } else if (video.webkitRequestFullscreen) {
-          video.webkitRequestFullscreen(); // Crucial for iOS
-        } else if (video.msRequestFullscreen) {
-          video.msRequestFullscreen();
-        }
+        // 3. Play the video FIRST
+        video.play().then(() => {
+          // 4. THEN request fullscreen (inside the 'then' block)
+          video.muted = false; // Unmute after successful play
+          if (video.requestFullscreen) {
+            video.requestFullscreen();
+          } else if (video.mozRequestFullScreen) {
+            video.mozRequestFullScreen();
+          } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen(); // For Safari on iOS
+          } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+          }
+        }).catch(error => {
+          console.error('Autoplay/Fullscreen Error:', error);
+          // Important: Show the thumbnail and play button again if there's an error
+          thumbnail.style.display = 'block';
+          playButton.style.display = 'block';
+          mediaItem.classList.remove('playing');
+          // Optionally, display an error message to the user
+          alert("Error playing video: " + error.message); // Or a nicer alert
+        });
 
-        // THEN, play the video (after the fullscreen request)
-        video.play().catch(error => console.error("Autoplay/Fullscreen Error:", error));
 
-        // Exit fullscreen handling (modified for iOS)
-        document.addEventListener('webkitfullscreenchange', exitHandler); // iOS uses webkit prefix
-        document.addEventListener('fullscreenchange', exitHandler); // Standard event
+        // 5. Fullscreen change listener (important for resetting state)
+        document.addEventListener('webkitfullscreenchange', exitHandler);
+        document.addEventListener('fullscreenchange', exitHandler);
 
         function exitHandler() {
-          if (!document.webkitFullscreenElement && !document.fullscreenElement) { // Check webkit AND standard for iOS and other browsers
-            mediaItem.classList.remove("playing");
-            thumbnail.style.display = "block";
-            playButton.style.display = "block";
+          if (!document.webkitFullscreenElement && !document.fullscreenElement) {
+            mediaItem.classList.remove('playing');
+            thumbnail.style.display = 'block';
+            playButton.style.display = 'block';
             video.pause();
-            video.currentTime = 0; // Reset video to the beginning (optional)
+            video.currentTime = 0;
           }
         }
       });
