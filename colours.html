@@ -34,20 +34,6 @@
   <a href="graphics.html">Graphics</a>
 </div>
 
-<div class="lottie-animation-container" id="lottie-container">
-</div>
-
-<script>
-  // Lottie animation configuration
-  var animation = bodymovin.loadAnimation({
-    container: document.getElementById('lottie-container'), // The container where the animation will be displayed
-    renderer: 'svg', // Render the animation as an SVG
-    loop: true, // Loop the animation
-    autoplay: true, // Start the animation automatically
-    path: 'website-maintenance.json' // Path to your Lottie JSON file
-  });
-</script>
-
 <!-- JavaScript -->
 <script>
   // Function to toggle the menu on smaller screens
@@ -60,6 +46,151 @@
     }
   }
 </script>
+
+
+<div class="media-row">  <div class="media-item">
+  <div class="media-item-content">
+    <img src="leo-poster.jpg" alt="Video Poster" class="media-poster">
+    <button class="play-button">Play</button>
+  </div>
+  <div class="media-details">
+    <h3>Bloody Sweet</h3>
+    <p>Album / Movie : LEO<br>
+      Composed by Anirudh Ravichander<br>
+      Lyrics - Heisenberg<br>
+      Vocals - Anirudh Ravichander & Siddharth Basrur</p>
+  </div>
+  <video controls preload="none" class="media-video">
+    <source src="LEO%20-%20Bloody%20Sweet%20.mp4" type="video/mp4">
+    <source src="video.webm" type="video/webm">
+    Your browser does not support the video element.
+  </video>
+</div>
+
+  <div class="media-item">
+    <div class="media-item-content">
+      <img src="leo-poster.jpg" alt="Video 2 Poster" class="media-poster">
+      <button class="play-button">Play</button>
+    </div>
+    <div class="media-details">
+      <h3>Bloody Sweet</h3>
+      <p> Album / Movie : LEO<br>
+        Composed by Anirudh Ravichander<br>
+        Lyrics - Heisenberg<br>
+        Vocals - Anirudh Ravichander & Siddharth Basrur</p>
+    </div>
+    <video controls preload="none" class="media-video">
+      <source src="LEO%20-%20Bloody%20Sweet%20.mp4" type="video/mp4">
+      <source src="video2.webm" type="video/webm">
+      Your browser does not support the video element.
+    </video>
+  </div>
+
+
+
+
+
+
+  <div class="media-item">
+    <div class="media-item-content">
+      <img src="leo-poster.jpg" alt="Video 3 Poster" class="media-poster">
+      <button class="play-button">Play</button>
+    </div>
+    <div class="media-details">
+      <h3>Bloody Sweet</h3>
+      <p>Album / Movie : LEO<br>
+        Composed by Anirudh Ravichander<br>
+        Lyrics - Heisenberg<br>
+        Vocals - Anirudh Ravichander & Siddharth Basrur</p>
+    </div>
+    <video controls preload="none" class="media-video">
+      <source src="LEO%20-%20Bloody%20Sweet%20.mp4" type="video/mp4">
+      <source src="video3.webm" type="video/webm">
+      Your browser does not support the video element.
+    </video>
+  </div>
+
+</div>
+
+<script>
+  const mediaItems = document.querySelectorAll('.media-item');
+
+  mediaItems.forEach(mediaItem => {
+    const poster = mediaItem.querySelector('.media-poster');
+    const video = mediaItem.querySelector('.media-video');
+    const playButton = mediaItem.querySelector('.play-button');
+
+    poster.addEventListener('click', () => {
+      playButton.click();
+    });
+
+    playButton.addEventListener('click', () => {
+      poster.style.display = 'none';
+      playButton.style.display = 'none';
+      video.style.display = 'block';
+      video.play();
+
+      // Request fullscreen (cross-browser compatible)
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.mozRequestFullScreen) { /* Firefox */
+        video.mozRequestFullScreen();
+      } else if (video.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) { /* IE/Edge */
+        video.msRequestFullscreen();
+      }
+    });
+
+    video.addEventListener('pause', () => {
+      poster.style.display = 'block';
+      playButton.style.display = 'block';
+      video.style.display = 'none';
+    });
+
+    video.addEventListener('ended', () => {
+      poster.style.display = 'block';
+      playButton.style.display = 'block';
+      video.style.display = 'none';
+    });
+
+
+    // Event listener for exiting fullscreen
+    video.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) { // Check if NOT in fullscreen
+        poster.style.display = 'block';
+        playButton.style.display = 'block';
+        video.style.display = 'none';
+      }
+    });
+
+    video.addEventListener('mozfullscreenchange', () => { // Firefox
+      if (!document.mozFullScreenElement) {
+        poster.style.display = 'block';
+        playButton.style.display = 'block';
+        video.style.display = 'none';
+      }
+    });
+
+    video.addEventListener('webkitfullscreenchange', () => { // Chrome, Safari and Opera
+      if (!document.webkitFullscreenElement) {
+        poster.style.display = 'block';
+        playButton.style.display = 'block';
+        video.style.display = 'none';
+      }
+    });
+
+    video.addEventListener('msfullscreenchange', () => { // IE/Edge
+      if (!document.msFullscreenElement) {
+        poster.style.display = 'block';
+        playButton.style.display = 'block';
+        video.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+
 
 
 <footer class="footer">

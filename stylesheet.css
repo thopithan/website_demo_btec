@@ -521,3 +521,101 @@ input[type="submit"]:hover {
 .audio-player audio {
 	width: 100%;
 }
+
+
+
+/* video */
+/* Common styles for media items (both audio and video) */
+.media-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: calc(33.33% - 30px); /* 3 items per row, adjust as needed */
+	margin-bottom: 30px;
+	position: relative;
+	text-align: center; /* Center text within details */
+	padding: 20px; /* Add padding inside each item */
+	border: 3px solid #FF9500; /* Optional: Add a border */
+	border-radius: 8px; /* Optional: Rounded corners */
+	box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* Container for image and play button */
+.media-item-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 0; /* Remove right margin */
+	margin-bottom: 20px; /* Space between image/button and details */
+}
+
+.media-item img {
+	width: 100%;
+	height: auto;
+	max-width: 200px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	display: block;
+}
+
+.play-button {
+	background-color: white; /* Initial background color */
+	color: black; /* Initial text color */
+	padding: 10px 15px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.play-button:hover {
+	background-color: #FF9500; /* Slightly darker background on hover */
+}
+
+.play-button:active { /* Styles when the button is clicked */
+	background-color: #FF9500; /* Even darker background when clicked */
+	color: #333; /* Darker text color when clicked */
+}
+
+.media-details {
+	flex: 1; /* Allow details to take up remaining space */
+	color: white;
+}
+
+.media-details h3 {
+	margin: 0 0 5px 0;
+}
+
+.media-details p {
+	font-size: smaller;
+	margin: 0;
+}
+
+.media-video {
+	width: 100%;
+	max-width: 600px;
+	display: none;
+}
+
+/* Container for the row of media items */
+.media-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+	justify-content: center;
+	padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.media-item {
+		width: calc(50% - 30px); /* 2 items per row */
+	}
+}
+
+@media (max-width: 480px) {
+	.media-item {
+		width: 100%; /* 1 item per row */
+	}
+}
