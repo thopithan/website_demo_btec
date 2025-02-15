@@ -108,19 +108,21 @@
         // 2. Mute video (for autoplay on mobile)
         video.muted = true;
 
-        // 3. Play the video FIRST
+        // 3. Request fullscreen first, then play the video
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.mozRequestFullScreen) {
+          video.mozRequestFullScreen();
+        } else if (video.webkitRequestFullscreen) {
+          video.webkitRequestFullscreen(); // For Safari on iOS
+        } else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
+
+        // 4. Play the video AFTER requesting fullscreen
         video.play().then(() => {
-          // 4. THEN request fullscreen (inside the 'then' block)
-          video.muted = false; // Unmute after successful play
-          if (video.requestFullscreen) {
-            video.requestFullscreen();
-          } else if (video.mozRequestFullScreen) {
-            video.mozRequestFullScreen();
-          } else if (video.webkitRequestFullscreen) {
-            video.webkitRequestFullscreen(); // For Safari on iOS
-          } else if (video.msRequestFullscreen) {
-            video.msRequestFullscreen();
-          }
+          // Unmute after successful play
+          video.muted = false;
         }).catch(error => {
           console.error('Autoplay/Fullscreen Error:', error);
           // Important: Show the thumbnail and play button again if there's an error
