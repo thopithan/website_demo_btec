@@ -30,9 +30,7 @@
   <a href="graphics.html">Graphics</a>
 </div>
 
-<!-- Media Gallery -->
 <div class="media-row">
-  <!-- Media Item -->
   <div class="media-item">
     <div class="media-item-content">
       <img src="leo-poster.jpg" alt="Video Thumbnail" class="thumbnail">
@@ -58,27 +56,68 @@
 
     playButtons.forEach(button => {
       button.addEventListener("click", function () {
-        const videoContainer = this.closest(".media-item").querySelector(".media-video");
+        const mediaItem = this.closest(".media-item");
+        const videoContainer = mediaItem.querySelector(".media-video");
+        const video = videoContainer.querySelector("video");
+        const thumbnail = mediaItem.querySelector(".thumbnail");
+        const playButton = mediaItem.querySelector(".play-button");
 
-        if (videoContainer) {
-          videoContainer.style.display = "block"; // Show the video
-          const video = videoContainer.querySelector("video");
+        mediaItem.classList.add("playing");
+        thumbnail.style.display = "none";
+        playButton.style.display = "none";
 
-          if (video.requestFullscreen) {
-            video.requestFullscreen();
-          } else if (video.mozRequestFullScreen) {
-            video.mozRequestFullScreen();
-          } else if (video.webkitRequestFullscreen) {
-            video.webkitRequestFullscreen();
-          } else if (video.msRequestFullscreen) {
-            video.msRequestFullscreen();
-          }
+        video.muted = false;
 
-          video.play(); // Start playing
+        // Fullscreen logic:
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.mozRequestFullScreen) { /* Firefox */
+          video.mozRequestFullScreen();
+        } else if (video.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) { /* IE/Edge */
+          video.msRequestFullscreen();
         }
+
+        video.play().catch(error => console.error("Autoplay Error:", error));
+
+
+        // Exit fullscreen and close video on minimize/escape:
+        document.addEventListener('fullscreenchange', exitHandler);
+        document.addEventListener('webkitfullscreenchange', exitHandler);
+        document.addEventListener('mozfullscreenchange', exitHandler);
+        document.addEventListener('MSFullscreenChange', exitHandler);
+
+        function exitHandler() {
+          if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
+            // Video exited fullscreen
+            mediaItem.classList.remove("playing");
+            thumbnail.style.display = "block";
+            playButton.style.display = "block";
+            video.pause(); // Stop the video
+          }
+        }
+
+
+
+        video.addEventListener('pause', () => {
+          if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement){
+            mediaItem.classList.remove("playing");
+            thumbnail.style.display = "block";
+            playButton.style.display = "block";
+          }
+        });
+
+        video.addEventListener('ended', () => {
+          mediaItem.classList.remove("playing");
+          thumbnail.style.display = "block";
+          playButton.style.display = "block";
+        });
       });
     });
   });
+
+  // ... (rest of your script) ...
 </script>
 
 <footer class="footer">
