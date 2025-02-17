@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
@@ -9,7 +9,6 @@
 </head>
 <body style="background-color: #000000;">
 
-<!-- Header Section -->
 <header class="header">
   <div class="header-content">
     <!-- Logo and Company Name on the Left -->
@@ -20,6 +19,7 @@
     <a href="javascript:void(0);" class="icon" onclick="toggleMenu()"><img src="hamburger.png" class="logo" ></a>
   </div>
 </header>
+
 
 <!-- Top Navigation Bar -->
 <div class="topnav" id="myTopnav">
@@ -36,7 +36,7 @@
 </div>
 
 
-<!-- JavaScript for humbarga rmenu   -->
+<!-- JavaScript for humbergar icon   -->
 <script>
   // Function to toggle the menu on smaller screens
   function toggleMenu() {
@@ -48,58 +48,73 @@
     }
   }
 </script>
-<!--  enf of JavaScript for humbarga rmenu   -->
 
 
-<div class="full-width-container">
-  <form onsubmit="showThankYou()">  <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
+<div class="audio-grid-container">
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="feedback">Feedback:</label>
-    <textarea id="feedback" name="feedback" required></textarea>
-
-    <input type="submit" value="Submit">
-  </form>
-</div>
-
-
-<!--  thanks ANIMATION AND THANKS MEASSAGE  -->
-<div class="full-width-container">
-<div id="thank-you-message" style="display:none;">
-  <h1>Thank You for Your Feedback!</h1>
-  <p style="color: #FF9500">We appreciate you taking the time to share your thoughts.</p>
-  <div class="full-width-container">
-    <div class="lottie-animation-container" id="lottie-container">
+  <div class="audio-grid-item">
+    <div class="audio-player">
+      <img src="leo-poster.jpg" alt="Bloody Sweet Song Poster">
+      <div class="audio-details">
+        <h3>Bloody Sweet</h3>
+        <p>Music: Anirudh Ravichander</p>
+      </div>
+      <audio controls>
+        <source src="Bloody-Sweet-MassTamilan.dev.mp3" type="audio/mpeg">
+        <source src="audio1.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <div class="item-description">
+      Lyricists: Heisenberg, Asal Kolaar, Vishnu Edavan<br>
+      Length: 02:48
     </div>
   </div>
+
+  <div class="audio-grid-item">
+    <div class="audio-player">
+      <img src="leo-poster.jpg" alt="Audio 2 Image">
+      <div class="audio-details">
+        <h3>Audio Title 2</h3>
+        <p>Short description of audio track 2.</p>
+      </div>
+      <audio controls>
+        <source src="Bloody-Sweet-MassTamilan.dev.mp3" type="audio/mpeg">
+        <source src="audio2.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <div class="item-description">
+      Lyricists: Heisenberg, Asal Kolaar, Vishnu Edavan<br>
+      Length: 02:48
+    </div>
+  </div>
+
+  <div class="audio-grid-item">
+    <div class="audio-player">
+      <img src="leo-poster.jpg" alt="Audio 3 Image">
+      <div class="audio-details">
+        <h3>Audio Title 3</h3>
+        <p>Short description of audio track 3.</p>
+      </div>
+      <audio controls>
+        <source src="Bloody-Sweet-MassTamilan.dev.mp3" type="audio/mpeg">
+        <source src="audio3.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <div class="item-description">
+      Lyricists: Heisenberg, Asal Kolaar, Vishnu Edavan<br>
+      Length: 02:48
+    </div>
+  </div>
+
 </div>
-</div>
 
-<!--  end  -->
-<script>
-  function showThankYou() {
-    event.preventDefault(); // Prevent form submission
 
-    document.getElementById("thank-you-message").style.display = "block";
-    document.querySelector(".full-width-container form").style.display = "none"; // Hide the form
-  }
-</script>
 
-<script>
-  // Lottie animation configuration
-  var animation = bodymovin.loadAnimation({
-    container: document.getElementById('lottie-container'), // The container where the animation will be displayed
-    renderer: 'svg', // Render the animation as an SVG
-    loop: true, // Loop the animation
-    autoplay: true, // Start the animation automatically
-    path: 'feedbackanimation.json' // Path to your Lottie JSON file
-  });
-</script>
 
-<!--  end  -->
+
 
 <footer class="footer">
   <p>

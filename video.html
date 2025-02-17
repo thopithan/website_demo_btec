@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>G Bank.com</title>
+  <link type="text/css" rel="stylesheet" href="stylesheet.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+</head>
+<body style="background-color: #000000;">
+
+<header class="header">
+  <div class="header-content">
+    <a href="index.html"><img src="logo.png" alt="Company Logo" class="logo"></a>
+    <a href="index.html"><span class="company-name">Bank.com</span></a>
+    <a href="javascript:void(0);" class="icon" onclick="toggleMenu()"><img src="hamburger.png" class="logo"></a>
+  </div>
+</header>
+
+<!-- Top Navigation Bar -->
+<div class="topnav" id="myTopnav">
+  <a href="index.html">Home</a>
+  <a href="links.html">Links</a>
+  <a href="images.html">Images</a>
+  <a href="video.html">Video</a>
+  <a href="feedback.html">Feedback</a>
+  <a href="audio.html">Audio</a>
+  <a href="lists.html">Lists</a>
+  <a href="forms.html">Forms</a>
+  <a href="scripting.html">Scripting</a>
+  <a href="graphics.html">Graphics</a>
+</div>
+
+<div class="media-row">
+  <div class="media-item">
+    <div class="media-item-content">
+      <img src="leo-poster.jpg" alt="Video 1 Thumbnail" class="thumbnail">
+      <button class="play-button">▶ Play</button>
+    </div>
+    <div class="media-video">
+      <video class="media-content" controls preload="metadata" playsinline>
+        <source src="LEO-Bloody-Sweet.mp4" type="video/mp4">
+        <source src="LEO-Bloody-Sweet.webm" type="video/webm">
+        Your browser does not support the video element.
+      </video>
+    </div>
+    <div class="media-details">
+      <h3>Video 1 Title</h3>
+      <p>Video 1 Description</p>
+    </div>
+  </div>
+
+  <div class="media-item">
+    <div class="media-item-content">
+      <img src="leo-poster.jpg" alt="Video 2 Thumbnail" class="thumbnail">
+      <button class="play-button">▶ Play</button>
+    </div>
+    <div class="media-video">
+      <video class="media-content" controls preload="metadata" playsinline>
+        <source src="LEO-Bloody-Sweet.mp4" type="video/mp4">
+        <source src="LEO-Bloody-Sweet.webm" type="video/webm">
+        Your browser does not support the video element.
+      </video>
+    </div>
+    <div class="media-details">
+      <h3>Video 2 Title</h3>
+      <p>Video 2 Description</p>
+    </div>
+  </div>
+
+  <div class="media-item">
+    <div class="media-item-content">
+      <img src="leo-poster.jpg" alt="Video 3 Thumbnail" class="thumbnail">
+      <button class="play-button">▶ Play</button>
+    </div>
+    <div class="media-video">
+      <video class="media-content" controls preload="metadata" playsinline>
+        <source src="LEO-Bloody-Sweet.mp4" type="video/mp4">
+        <source src="LEO-Bloody-Sweet.webm" type="video/webm">
+        Your browser does not support the video element.
+      </video>
+    </div>
+    <div class="media-details">
+      <h3>Video 3 Title</h3>
+      <p>Video 3 Description</p>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript for humbergar icon   -->
+<script>
+  // Function to toggle the menu on smaller screens
+  function toggleMenu() {
+    const nav = document.getElementById("myTopnav"); // Get the navigation element
+    if (nav.classList.contains("responsive")) {
+      nav.classList.remove("responsive"); // Remove "responsive" class to hide the menu
+    } else {
+      nav.classList.add("responsive"); // Add "responsive" class to show the menu
+    }
+  }
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const playButtons = document.querySelectorAll('.play-button');
+
+    playButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const mediaItem = this.closest('.media-item');
+        const videoContainer = mediaItem.querySelector('.media-video');
+        const video = videoContainer.querySelector('video');
+        const videoSource = video.currentSrc || video.src;
+        const thumbnail = mediaItem.querySelector('.thumbnail');
+        const playButton = mediaItem.querySelector('.play-button');
+
+        // 1. Hide thumbnail and play button
+        thumbnail.style.display = 'none';
+        playButton.style.display = 'none';
+        mediaItem.classList.add('playing');
+
+        // 2. iOS-Specific Fullscreen Handling
+        if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) { // Check if it's iOS
+          // Open video in new tab/window (using browser's fullscreen)
+          const fullscreenWindow = window.open(videoSource, '_blank'); // Open in a new tab or window
+
+          if (fullscreenWindow) { // Check if the popup was not blocked
+            fullscreenWindow.addEventListener('pagehide', function() {
+              resetVideoState(mediaItem, video); // Reset when the user navigates away from the video
+            });
+          } else {
+            // Handle popup block (e.g., display a message to the user)
+            alert("Please allow popups to view this video in fullscreen.");
+            resetVideoState(mediaItem, video); // Reset video state
+          }
+
+
+        } else { // For other devices (non-iOS) - Use the standard fullscreen API
+          if (video.requestFullscreen) {
+            video.requestFullscreen();
+          } else if (video.mozRequestFullScreen) {
+            video.mozRequestFullScreen();
+          } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+          } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+          }
+
+          video.play().then(() => {
+            video.muted = false;
+          }).catch(error => {
+            console.error("Autoplay/Fullscreen Error:", error);
+            resetVideoState(mediaItem, video);
+            alert("Error playing video: " + error.message);
+          });
+
+          document.addEventListener('fullscreenchange', exitHandler);
+          document.addEventListener('webkitfullscreenchange', exitHandler);
+
+          function exitHandler() {
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+              resetVideoState(mediaItem, video);
+            }
+          }
+        }
+
+
+
+        window.addEventListener('pagehide', function() {
+          video.pause();
+        });
+
+        function resetVideoState(mediaItem, video) {
+          mediaItem.classList.remove('playing');
+          thumbnail.style.display = 'block';
+          playButton.style.display = 'block';
+          video.pause();
+          video.currentTime = 0;
+        }
+      });
+    });
+  });
+</script>
+
+
+<footer class="footer">
+  <p>
+    <a href="#">Legals</a> | <a href="#">Privacy</a> | <a href="#">Cookies</a> | <a href="#">Contact Us</a>
+  </p>
+  <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+  <div class="social-icons">
+    <a href="https://www.facebook.com"><img src="instagram.png" alt="Facebook"></a>
+    <a href="https://www.instagram.com"><img src="facebook.png" alt="Facebook"></a>
+    <a href="https://x.com/home"><img src="twittericon.png" alt="Facebook"></a>
+  </div>
+</footer>
+
+</body>
+</html>
