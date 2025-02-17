@@ -776,6 +776,10 @@ input[type="submit"]:hover {
 	}
 }
 
+
+
+
+/* web loading screen animation */
 #loading-screen {
 	position: fixed;
 	top: 0;
