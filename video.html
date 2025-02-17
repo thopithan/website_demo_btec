@@ -31,6 +31,51 @@
   <a href="graphics.html">Graphics</a>
 </div>
 
+<!-- JavaScript for humbergar icon   -->
+<script>
+  // Function to toggle the menu on smaller screens
+  function toggleMenu() {
+    const nav = document.getElementById("myTopnav"); // Get the navigation element
+    if (nav.classList.contains("responsive")) {
+      nav.classList.remove("responsive"); // Remove "responsive" class to hide the menu
+    } else {
+      nav.classList.add("responsive"); // Add "responsive" class to show the menu
+    }
+  }
+</script>
+
+
+
+
+
+<div id="loading-screen">
+  <div id="lottie-container"></div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    bodymovin.loadAnimation({
+      container: document.getElementById("lottie-container"),
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      path: "Circle Loader (1).json"
+    });
+
+    setTimeout(() => {
+      document.getElementById("loading-screen").classList.add("hidden");
+    }, 2000);
+  });
+</script>
+
+
+
+
+
+
+
+
+
 <div class="media-row">
   <div class="media-item">
     <div class="media-item-content">
@@ -87,18 +132,7 @@
   </div>
 </div>
 
-<!-- JavaScript for humbergar icon   -->
-<script>
-  // Function to toggle the menu on smaller screens
-  function toggleMenu() {
-    const nav = document.getElementById("myTopnav"); // Get the navigation element
-    if (nav.classList.contains("responsive")) {
-      nav.classList.remove("responsive"); // Remove "responsive" class to hide the menu
-    } else {
-      nav.classList.add("responsive"); // Add "responsive" class to show the menu
-    }
-  }
-</script>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {

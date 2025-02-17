@@ -9,6 +9,7 @@
 </head>
 <body style="background-color: #000000;">
 
+
 <header class="header">
   <div class="header-content">
     <!-- Logo and Company Name on the Left -->
@@ -48,6 +49,32 @@
     }
   }
 </script>
+
+
+<div id="loading-screen">
+  <div id="lottie-container"></div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    bodymovin.loadAnimation({
+      container: document.getElementById("lottie-container"),
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      path: "Circle Loader (1).json"
+    });
+
+    setTimeout(() => {
+      document.getElementById("loading-screen").classList.add("hidden");
+    }, 2000);
+  });
+</script>
+
+
+
+
+
 
 
 <div class="audio-grid-container">
