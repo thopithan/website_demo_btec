@@ -804,3 +804,79 @@ input[type="submit"]:hover {
 	visibility: hidden;
 	pointer-events: none; /* Important for accessibility */
 }
+
+
+/* 3-column links container */
+.containerforlinks {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+	gap: 20px;
+	padding: 20px;
+	justify-content: center;
+	align-items: center;
+
+}
+
+/* Individual image columns */
+.columnforlinksimage {
+	text-align: center;
+	background: black;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	border: 8px solid #FF9500 ; /* Example: Light gray border, 2 pixels thick */
+}
+
+.columnforlinksimage img {
+	width: 100%;
+	height: auto;
+	border-radius: 10px; /* Optional: Rounded corners */
+
+}
+
+/* Image descriptions */
+.descriptionlinks {
+	margin-top: 10px;
+	font-size: 16px;
+	color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+	.containerforlinks {
+		grid-template-columns: repeat(1, 1fr); /* Switch to 2 columns on tablets */
+	}
+}
+
+@media (max-width: 600px) {
+	.containerforlinksimage {
+		grid-template-columns: 1fr; /* Stack into a single column on small screens */
+	}
+}
+
+/* button design*/
+.button-container-link{
+	text-align: center;
+	margin-top: 15px; /* Adjust space between text and button */
+}
+
+.btn-link {
+	color: black;
+	padding: 10px 20px;
+	font-size: 20px; /* Adjust text size for button size */
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.3s background-color ease; /* Add transition here, too */
+}
+
+.button-container-link .btn-link { /* More specific rule */
+	background-color: white;
+}
+
+.btn-link:hover {
+	background-color: #FF9500 ;
+	color: black/* Darker color on hover */
+}
+
+
